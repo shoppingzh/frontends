@@ -1,0 +1,56 @@
+@charset "utf-8";
+
+/*示例样式, 可以删掉 start*/
+.page-home .intro{color:#fff;padding:.3rem;background:linear-gradient(215deg, #33c3ff 0%, #4d7fed 100%)}.page-home .intro h1{font-size:.58rem;margin-bottom:.1rem}.page-home .intro p{font-size:.26rem;letter-spacing:1px;font-weight:300}.page-home main .bui-accordion{border-top:0}.page-home main>.bui-list .bui-btn{padding-left:.4rem}.page-home dl dt{padding-left:.4rem}.page-home dl dd{background:#fff;padding-left:.5rem;padding-right:0}.page-home .bui-nav li{background:none;color:#999;font-size:.3rem}.page-home .bui-nav li.active{color:#333;background:none}.page-home .bui-accordion i{color:#999}.page-home .bui-accordion .bui-btn{color:#666}.page-home .bui-accordion>.bui-btn{color:#666}.page-home .bui-accordion .active{color:#39a4ff}.page-home .bui-accordion .active i{color:#39a4ff}.bui-sidebar img{width:100%}.bui-sidebar-wrap .bui-page main{background:#fff}.menu{margin:.2rem;display:inline-block;background:#39a4ff;border-radius:.06rem;color:#fff;width:.7rem;height:.7rem;line-height:.6rem;text-align:center}.menu.active{background:red}.menu i{font-size:.48rem}.placeholder{margin-top:1rem;text-align:center}.placeholder img{width:1.4rem;margin:0 auto .3rem auto}.placeholder-text{width:5.6rem;margin:0 auto;border:1px dashed #70B1E9;background:#ECF9FF;border-radius:.3rem;padding:.3rem}.placeholder-text h3{color:#333;font-size:.4rem;margin-bottom:.2rem}.bui-accordion dd{background:#fff}.bui-list-thumbnail .bui-btn{border-bottom:0}.price i{font-size:.2rem;font-style:normal;margin-right:.05rem}.price{font-size:.36rem;color:#FF6701}.controls-btn{background:#fff;margin:0;padding:.3rem .2rem;border-top:1px solid #efefef}.controls-btn .bui-btn{margin-bottom:.2rem}.stepbar .bui-list{margin-bottom:.1rem}.stepbar .tips{margin-bottom:.5rem}
+/*示例样式, 可以删掉 end*/
+
+@keyframes star{
+    0% {
+        transform: scale(1) rotate(-15deg);
+        -webkit-transform: scale(1) rotate(-15deg);
+    }
+    15% {
+        transform: scale(.8) rotate(-15deg);
+        -webkit-transform: scale(.8) rotate(-15deg);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(.8) rotate(-15deg);
+        -webkit-transform: scale(.8) rotate(-15deg);
+    }
+    100% {
+        transform: scale(2.5) rotate(-15deg);
+        -webkit-transform: scale(2.5) rotate(-15deg);
+        opacity: 0;
+    }
+}
+
+/* bui image viewer */
+.bui-dialog-imageViewer{ background-color: rgba(0, 0, 0, .65); }
+.bui-dialog-imageViewer .bui-dialog-main{ position: relative; }
+.bui-dialog-imageViewer .imageViewer-wrapper{ height: 100%; }
+.bui-dialog-imageViewer img{ max-width: 100%; }
+.bui-dialog-imageViewer .imageViewer-actions{ position: absolute; bottom: .5rem; left: 0; right: 0; }
+.bui-dialog-imageViewer .imageViewer-actions .bui-btn{ background-color: inherit; border: none; margin-right: .1rem; padding: .1rem; color: #ccc; }
+.bui-dialog-imageViewer .imageViewer-actions .bui-btn:active{ opacity: .5; }
+
+/* bui spinner */
+@keyframes orbit1-ani {
+    0% { transform: rotateX(35deg) rotateY(-45deg) rotateZ(0deg); -webkit-transform: rotateX(35deg) rotateY(-45deg) rotateZ(0deg); }
+    100% { transform: rotateX(35deg) rotateY(-45deg) rotateZ(360deg); -webkit-transform: rotateX(35deg) rotateY(-45deg) rotateZ(360deg); }
+}
+@keyframes orbit2-ani {
+    0% { transform: rotateX(50deg) rotateY(10deg) rotateZ(0deg); -webkit-transform: rotateX(50deg) rotateY(10deg) rotateZ(0deg); }
+    100% { transform: rotateX(50deg) rotateY(10deg) rotateZ(360deg); -webkit-transform: rotateX(50deg) rotateY(10deg) rotateZ(360deg); }
+}
+@keyframes orbit3-ani {
+    0% { transform: rotateX(35deg) rotateY(55deg) rotateZ(0deg); -webkit-transform: rotateX(35deg) rotateY(55deg) rotateZ(0deg); }
+    100% { transform: rotateX(35deg) rotateY(55deg) rotateZ(360deg); -webkit-transform: rotateX(35deg) rotateY(55deg) rotateZ(360deg); }
+}
+.spinner{ width: 50px; height: 50px; position: relative; perspective: 800px; }
+.spinner .orbit{ position: absolute; width: 100%; height: 100%; border-radius: 50%; }
+.spinner .orbit:nth-child(1){ border-bottom: 3px solid rgb(255, 29, 94); animation: orbit1-ani 1s infinite linear; -webkit-animation: orbit1-ani 1s infinite linear; }
+.spinner .orbit:nth-child(2){ border-right: 3px solid rgb(255, 29, 94); animation: orbit2-ani 1s infinite linear; -webkit-animation: orbit2-ani 1s infinite linear; }
+.spinner .orbit:nth-child(3){ border-top: 3px solid rgb(255, 29, 94); animation: orbit3-ani 1s infinite linear; -webkit-animation: orbit3-ani 1s infinite linear; }
+
+.bui-spinner .text{ padding: 0 .2rem; color: #666; }

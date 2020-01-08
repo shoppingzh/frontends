@@ -1,0 +1,83 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #color{ position: absolute; width: 85px; height: 85px; border: 1px solid #eee; border-radius: 8px; overflow: hidden; }
+        #randBtn{ position: absolute; left: 900px; top: 400px; width: 150px; height: 30px; background-color: cornflowerblue; border: 1px solid deepskyblue; color: #eee; }
+    </style>
+</head>
+<body>
+
+    <canvas id="img" width="800" height="800" style="cursor: pointer; border: 1px solid #ccc;"></canvas>
+    <button id="randBtn">换一个</button>
+    <div id="color"></div>
+
+    <script>
+        var canvas = document.querySelector('#img');
+        var ctx = canvas.getContext('2d');
+
+        var img = new Image();
+        img.onload = function(e){
+            var height = img.height * 800 / img.width;
+            // 起点
+            var x = 0, y = 0;
+            if(height < 800){
+                y = (800 - height) / 2;
+            }
+            ctx.drawImage(img, x, y, 800, height);
+        }
+
+        drawImg('2.jpg');
+
+        
+        function drawImg(src){
+            ctx.clearRect(0, 0, 800, 800);
+            img.src = src;
+        }
+
+        function randomInt(min, max){
+            return Math.ceil(Math.random() * (max - min) + min);
+        }
+
+        // 换一个
+        document.querySelector('#randBtn').addEventListener('click', function(){
+            var src;
+            while(true){
+                src = randomInt(1, 10) + '.jpg';
+                if(src == img.src){
+                    continue;
+                }
+                drawImg(src);
+                console.log(src)
+                break;
+            }
+        })
+
+        // 鼠标移入/移除事件
+        var colorBox = document.querySelector('#color');
+        canvas.addEventListener('mousemove', function(e){
+            var x = e.layerX,
+                y = e.layerY;
+
+            var pixel = ctx.getImageData(x, y, 1, 1);
+            var data = pixel.data;
+            var r = data[0], g = data[1], b = data[2], a = data[3];
+            colorBox.style.backgroundColor = `rgba(${r}, ${g}, ${b}, ${a})`;
+
+            colorBox.style.display = 'block';
+            colorBox.style.left = (x + 20) + 'px';
+            colorBox.style.top = (y + 20) + 'px';
+        })
+
+        canvas.addEventListener('mouseout', function(e){
+            colorBox.style.display = 'none';
+        })
+
+
+    </script>
+    
+</body>
+</html>

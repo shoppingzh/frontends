@@ -1,0 +1,43 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+
+        function divide(top, bottom = 1){
+            return top / bottom;
+        }
+
+        console.info(divide(3));
+
+
+        // 还可以这么玩
+        var arr = [];
+        for(var i = 1; i <= 100;i++){
+            arr.push(i);
+        }
+
+        function add(a, b, c){
+            return a + b + c;
+        }
+        console.info(add(...arr))
+
+        // **********************************************
+
+        function sum(...nums){
+            var sum = 0;
+            nums.forEach(num => {
+                sum += num;
+            })
+            return sum;
+        }
+        console.info(sum(1, 1))
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,21 @@
+<style>
+    .floating-btn{position: absolute; display: inline-block; bottom: 1rem; right: .5rem; width: 1rem; padding: 0; line-height: 1rem; border: 0; box-sizing: border-box; height: 1rem; border-radius: 50%; overflow: hidden;}
+    .floating-btn.hide{ transition: all .5s; right: -.5rem; }
+</style>
+<div class="bui-page">
+    <header class="bui-bar">
+        <div class="bui-bar-left">
+            <a class="bui-btn btn-back"><i class="icon-back"></i></a>
+        </div>
+        <div class="bui-bar-main">悬浮按钮</div>
+        <div class="bui-bar-right">
+        </div>
+    </header>
+    <main>
+        <div class="bui-btn easy-drag ring danger" style="display: inline-block; position: relative; top: 50px; left: 30px;" href="">我是个可拖动的玩意</div>
+        <div class="warning easy-drag" style="padding: 10px 30px; border: 1px solid #eee; margin: 80px; border-radius: 8px; position: relative;">我是一段文本，我也是可以拖动的哦！由于我有一个80px的margin，所以拖动后可能会存在一定的位移效果。</div>
+        <div class="bui-btn floating-btn success easy-drag" href=""><i class="icon-setting" style="font-size: .5rem;"></i></div>
+    </main>
+    <footer>
+    </footer>
+</div>

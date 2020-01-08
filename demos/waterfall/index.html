@@ -1,0 +1,118 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /* .container{ position: relative; }
+        .container .item{ width: 25%; display: inline-block; box-sizing: border-box; font-size: 0; border: 2px solid #fff; position: absolute;  } */
+        .container .item{ width: 200px; box-sizing: border-box; border: 2px solid #fff; position: absolute; }
+        .container .item img{ width: 100%; } 
+    </style>
+</head>
+<body>
+    
+    <div class="container">
+        <!-- <div class="item"><img src="image/1.jpg"></div>
+        <div class="item"><img src="image/2.jpg"></div>
+        <div class="item"><img src="image/3.jpg"></div>
+        <div class="item"><img src="image/4.jpg"></div>
+        <div class="item"><img src="image/5.jpg"></div>
+        <div class="item"><img src="image/6.jpg"></div>
+        <div class="item"><img src="image/7.jpg"></div>
+        <div class="item"><img src="image/8.jpg"></div>
+        <div class="item"><img src="image/9.jpg"></div>
+        <div class="item"><img src="image/10.jpg"></div>
+        <div class="item"><img src="image/11.jpg"></div>
+        <div class="item"><img src="image/12.jpg"></div>
+        <div class="item"><img src="image/13.jpg"></div>
+        <div class="item"><img src="image/14.jpg"></div>
+        <div class="item"><img src="image/15.jpg"></div>
+        <div class="item"><img src="image/16.jpg"></div>
+        <div class="item"><img src="image/17.jpg"></div>
+        <div class="item"><img src="image/18.jpg"></div>
+        <div class="item"><img src="image/19.jpg"></div> -->
+    </div>
+
+    <script src="../js/jquery-3.4.1.js"></script>
+
+    <script>
+        var $c = $('.container');
+
+        // 使用本地图片
+        // for(var i = 0;i < 21; i++){
+        //     var $img = $('<img>').attr('src', `image/${i + 1}.jpg`);
+        //     var $item = $('<div>').append($img);
+        //     $c.append($item);
+        // }
+
+        // 使用网络图片(模拟网络卡顿)
+        $.getJSON('images.json', function(result){
+            result.forEach(function(src){
+                var $img = $('<img>').attr('src', src);
+                var $item = $('<div>').append($img);
+                $c.append($item);
+            })
+
+            $c.find('img').on('load', function(){
+                $(this).parent().addClass('item');
+                render(Math.floor($(window).width() / 200));
+            })
+        })
+
+        var lastTimeStamp, timer;
+        window.onresize = function(e){
+            var ts = e.timeStamp;
+            if(lastTimeStamp && ts - lastTimeStamp < 300){
+                clearTimeout(timer);
+            }
+            timer = setTimeout(() => {
+                render(Math.floor($(window).width() / 200));
+            }, 300);
+            lastTimeStamp = ts;
+        }
+
+        function render(cols){
+            console.log('渲染列数：' + cols);
+            // 存放每个列对应的top数据
+            var cache = {};
+            $c.find('.item').each(function(){
+                var $item = $(this),
+                    index = $item.index();
+                var pos = position(index, cols);
+                var col = pos.col, minTop = 0;
+                var keys = Object.keys(cache);
+                if(cols == keys.length){
+                    keys.forEach(function(key){
+                        var top = cache[key] || 0;
+                        if(minTop == 0 || minTop > top){
+                            minTop = top;
+                            col = key;
+                        }
+                    })
+                }
+                // 先停止前面的动画
+                $item.animate({
+                    left: col * 200 + 'px',
+                    top: minTop + 'px'
+                }, 200);
+                cache[col] = minTop + $item.outerHeight();
+                // console.log(cache)
+            })
+        }
+
+        function position(index, cols){
+            var row = parseInt(index / cols);
+            var col = index % cols;
+            return {
+                row: row,
+                col: col
+            };
+        }
+        
+        
+    </script>
+
+</body>
+</html>

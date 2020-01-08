@@ -1,0 +1,85 @@
+<style>
+    .start-test .blur-wrapper{ filter: blur(5px); opacity: .95; pointer-events: none; height: 100%; }
+    .start-test .profile{ border: 0; }
+    .start-test .profile .count span{ font-size: 18px; color: #ff8502; }
+    .start-test .question,
+    .start-test .answer{ padding: .1rem; margin: .1rem; }
+    .start-test .question{ border:1px solid #eee; border-radius: 5px; }
+    .start-test .question .desc{ padding: .1rem 0; }
+    .start-test .question .desc .type{ font-weight: bold; }
+    .start-test .question .desc .difficulty{ color: #ff8502; }
+    .start-test .answer .tips{ font-weight: bold; font-size: 12px; }
+    .start-test .answer .bui-list>.bui-btn{ border: none; }
+    .start-test .answer .bui-list>.bui-btn label{ padding-left: .1rem; }
+
+    .start-test .main{ position: absolute; left: 0; right: 0; top: 0; bottom: 0; z-index: 9999; padding: .55rem; margin-top: -1.8rem;}
+    .start-test .main .start-btn{ font-weight: bold; margin-top: .25rem; overflow: hidden; }
+    .start-test .timeout{ font-size: .35rem; color: #ff8502;  }
+</style>
+<div class="bui-page start-test">
+    <header class="bui-bar">
+        <div class="bui-bar-left">
+            <a class="bui-btn btn-back"><i class="icon-back"></i></a>
+        </div>
+        <div class="bui-bar-main">开始考试</div>
+        <div class="bui-bar-right">
+        </div>
+    </header>
+    <main style="background-color: #fff;">
+        <div class="main bui-box-align-middle bui-align-center">
+            <div class="width-100 span1">
+                <div class="tips">
+                    您正在参与的考试是 <strong>2019年数学期中考试</strong>，考试时间为<strong class="timeout">10分钟</strong>，
+                    点击下方“开始考试”按钮即可开始，开始考试后将进行考试计时，计时结束将自动提交考卷，请知悉。
+                </div>
+                <div id="startBtn" class="bui-btn primary small start-btn large ring">开始考试</div>
+            </div>
+        </div>
+
+        <div class="blur-wrapper">
+            <div class="bui-box bui-btn clearactive profile">
+                <div class="span8 name">2019年数学期中考试</div>
+                <div class="span4"><i class="icon-clock"></i> 30:00</div>
+                <div class="bui-value count"><span class="c-orange">1</span>/32</div>
+            </div>
+            <div class="question">
+                <div class="desc">
+                    <span class="type">单项选择题</span>
+                    <span class="difficulty">中等</span>
+                    <span class="score">15分</span>
+                </div>
+                <div class="content">
+                    <p>在学习普通话时，方言里区分舌尖中鼻音和双唇闭口鼻音的一律改成（ B ）即可</p>
+                    <p>A、双唇闭口鼻音</p>
+                    <p>B、舌尖中鼻音</p>
+                    <p>C、双唇开口鼻音</p>
+                    <p>D、舌尖后鼻音</p>
+                </div>
+            </div>
+            <div class="answer">
+                <p class="tips">请在此处作答</p>
+                <ul class="bui-list">
+                    <li class="bui-box bui-btn">
+                        <input type="radio" class="bui-radio" name="question" value="A" text="A">
+                        <label class="width-100">A</label>
+                    </li>
+                    <li class="bui-box bui-btn">
+                        <input type="radio" class="bui-radio" name="question" value="A" text="A">
+                        <label class="width-100">B</label>
+                    </li>
+                    <li class="bui-box bui-btn">
+                        <input type="radio" class="bui-radio" name="question" value="A" text="A">
+                        <label class="width-100">C</label>
+                    </li>
+                    <li class="bui-box bui-btn">
+                        <input type="radio" class="bui-radio" name="question" value="A" text="A">
+                        <label class="width-100">D</label>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </main>
+    <footer>
+    </footer>
+</div>

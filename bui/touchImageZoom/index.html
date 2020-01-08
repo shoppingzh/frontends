@@ -1,0 +1,92 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../js/zepto.js"></script>
+    <script src="../js/touch.min.js"></script>
+    <style>
+        /* .image-container{
+            width: 100%;
+        }
+        .image-container img{
+            width: 100%;
+        } */
+    </style>
+</head>
+<body>
+
+    <div class="image-container">
+        <img src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1671520030,2534075697&fm=26&gp=0.jpg">
+    </div>
+
+    <div id="data"></div>
+    
+    <script>
+
+        $('img').css('transform', `scale(1)`);
+
+        touch.on('img', 'pinch', function(e){
+            // alert($('img').css('transform'))
+            // $.each(e, function(key, value){
+            //     alert(`${key} = ${value}`)
+            // })
+            var $img = $(e.target),
+                scale = Number($img.attr('zoomScale') || '1'),
+                phaseScale = (e.scale - 1) * .05,
+                currentScale = scale + phaseScale,
+                timeStamp = Number($img.attr('zoomTimeStamp') || '0'),
+                phaseTimeStamp = e.timeStamp - timeStamp;
+                
+            
+            // $('#data').append($(`<p>${e.timeStamp}</p>`));
+
+            // alert(`当前：${scale}, 增量：${phaseScale}，计算后：${currentScale}`)
+
+            var m = Math.abs(currentScale - 1);
+            if((currentScale >= 0.3  && currentScale <= 3)){
+                $img.css('transform', `scale(${currentScale})`)
+                    .css('-webkit-transform', `scale(${currentScale})`);
+                $img.attr('zoomScale', currentScale);
+                $img.attr('zoomTimeStamp', e.timeStamp);
+
+            }
+            // $('#data').append($(`<p>当前：${scale}, 增量：${phaseScale}，计算后：${currentScale}</p>`));
+
+            // iOS测试 e的值
+            // isTrusted = false
+            // originEvent = [object TouchEvent]
+            // scale = 0.929...
+            // rotation = 0
+            // direction = left
+            // fingersCount = 2
+            // fingerStatus = move
+            // startRotate = function(){ t = !0}
+            // detail = [object Object]
+            // initCustomEvent = function...
+            // type = pinch
+            // target = [object HTMLImageElement]
+            // currentTarget = [object HTMLImageElement]
+            // eventPhase = 2
+            // cancelBubble = false
+            // bubbles = true
+            // cancelable = true
+            // defaultPrevented = false
+            // composed = false
+            // timeStamp = 1281
+            // srcElement = [object HTMLImageElement]
+            // returnValue = true
+            // composedPach = function..
+            // stopPropagation = function..
+            // stopImmediatePropagation = function..
+            // preventDefault = function..
+            // initEvent = function..
+            // NONE = 0
+            // CAPTURING_PHASE = 1
+            // AT_TARGET = 2
+            // BUBBLING_PHASE = 3
+        });
+    </script>
+</body>
+</html>

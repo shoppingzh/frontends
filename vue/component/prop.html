@@ -1,0 +1,44 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    <div id="app">
+        <counter-button 
+            v-for="btn in buttons"
+            v-bind:title="btn.name"></counter-button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script>
+        Vue.component('counter-button', {
+            props: ['title'],
+            data: function(){
+                return {
+                    count: 0
+                }
+            },
+            template: `
+                <button @click="{{count++}}">{{title}}({{count}})</button>
+            `
+        });
+        var app = new Vue({
+            el: '#app',
+            data: {
+                buttons: [{
+                    name: '按钮1'
+                }, {
+                    name: '按钮2'
+                }]
+            }
+        })
+    </script>
+
+    <style scoped>
+    </style>
+</body>
+</html>

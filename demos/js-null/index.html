@@ -1,0 +1,55 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>js的null</title>
+</head>
+<body>
+
+    <h3>typeof null = <span class="result">?</span> <button class="view" index="1">查看答案</button></h3>
+    <h3>typeof (typeof undefined) = <span class="result">?</span> <button class="view" index="2">查看答案</button></h3>
+
+    <h3>typeof zxp == undefined <span class="result">?</span> <button class="view" index="3">查看答案</button></h3>
+    <h3>typeof zxp == 'undefined' <span class="result">?</span> <button class="view" index="4">查看答案</button></h3>
+
+    <h3>undefined == undefined <span class="result">?</span> <button class="view" index="5">查看答案</button></h3>
+
+    <h3>var a = null; a ? 'yes' : 'no' <span class="result">?</span> <button class="view" index="6">查看答案</button></h3>
+
+
+    <script src="../js/jquery-3.4.1.js"></script>
+    <script>
+        var zxp;
+        $('.view').on('click', function(e){
+            var $this = $(this),
+                index = Number($this.attr('index') || '1'),
+                result = '';
+            switch(index){
+                case 1:
+                    result = typeof null;
+                    break;
+                case 2:
+                    result = typeof (typeof undefined);
+                    break;
+                case 3:
+                    result = typeof zxp == undefined;
+                    break;
+                case 4:
+                    result = typeof zxp == 'undefined';
+                    break;
+                case 5:
+                    result = undefined == undefined;
+                    break;
+                case 6:
+                    var a = null;
+                    result = a ? 'yes' : 'no';
+                    break;
+            }
+            $this.siblings('.result').text(result);
+            
+        });
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,130 @@
+<style>
+    .chatroom { background: #f3f5f8; }
+    .chatroom-inner .message{ padding: .1rem .2rem; box-sizing: border-box; }
+    .chatroom-inner .message .message-inner{  }
+    .chatroom-inner .message .avatar{ width: .8rem; height: .8rem; border-radius: 50%; overflow: hidden; font-size: 0; margin-right: .15rem; }
+    .chatroom-inner .message .name{ font-size: .24rem; color: #999; margin-bottom: .2rem; }
+    .chatroom-inner .message .content{ display: inline-block; background-color: #fff; padding: .2rem .1rem; border-radius: .2rem; max-width: 75%; overflow: hidden; }
+    .chatroom-inner .message .content.media-content{ padding: 0; font-size: 0; width: 50%; }
+
+    .chatroom-inner .message.mine .message-inner{ text-align: right; }
+    .chatroom-inner .message.mine .avatar{ margin-right: 0; margin-left: .2rem; }
+    .chatroom-inner .message.mine .content{background-color: #39a4ff; color: #fff; }
+
+    .chartroom-foot{ border-top: 1px solid #eee; position: relative; }
+    .chartroom-foot .input-box{ padding: .1rem; box-sizing: border-box; }
+    .chartroom-foot .input-box .bui-input{ border-radius: 1000px; }
+    .chartroom-foot .input-box .action-btn{ display: inline-block; width: .5rem; height: .5rem; line-height: .5rem; overflow: hidden; font-size: .4rem; box-sizing: border-box; padding: .02rem; border: 1px solid #999; border-radius: 50%; }
+
+    .action-container .action{ padding: .2rem; box-sizing: border-box; font-size: .24rem; color: #666; }
+    .action-container .action:active{ opacity: .75; }
+</style>
+<div class="bui-page">
+    <header class="bui-bar">
+        <div class="bui-bar-left">
+        </div>
+        <div class="bui-bar-main">消息</div>
+        <div class="bui-bar-right">
+        <div class="bui-btn"><i class="icon-more"></i></div>
+        </div>
+    </header>
+    <main>
+
+        <div class="bui-box-vertical chatroom" style="height: 100%;">
+            <div class="span1 chatroom-main" style="height: 100%; overflow-y: auto;">
+                <div class="primary-reverse bui-align-center container-y" b-show="page.haveMore">更早之前</div>
+                <div class="time bui-align-center">上次更新时间：<b b-text="page.time"></b></div>
+                <div class="chatroom-inner" style="position: relative;" b-template="page.tplChatroom(page.messages)"></div>
+                
+            </div>
+            <div class="chartroom-foot">
+                <div class="bui-box-align-middle input-box">
+                    <div class="span1">
+                        <div id="uiInput" class="bui-input" >
+                            <input type="text" value="" placeholder="请输入" style="padding: .4rem .2rem;">
+                        </div>
+                    </div>
+                    <div class="bui-value">
+                        <div id="moreBtn" class="action-btn bui-box-align-middle">
+                            <i class="icon-plus"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="uiMoreSheet" class="bui-dialog action-container">
+            <div class="bui-dialog-head">
+                <div class="bui-align-center item-text">选择您的操作</div>
+            </div>
+            <div class="bui-dialog-main">
+                <div class="bui-fluid-4">
+                    <div class="span1 action">
+                        <div class="bui-box-vertical">
+                            <i class="icon-camera c-pink font-m4x" ></i> 拍照
+                        </div>
+                    </div>
+                    <div class="span1 action">
+                        <div class="bui-box-vertical">
+                            <i class="icon-shoppingcart c-blue font-m4x" ></i> 购物车
+                        </div>
+                    </div>
+                    <div class="span1 action">
+                        <div class="bui-box-vertical">
+                            <i class="icon-setting c-red font-m4x" ></i> 设置
+                        </div>
+                    </div>
+                    <div class="span1 action">
+                        <div class="bui-box-vertical">
+                            <i class="icon-home c-yellow font-m4x" ></i> 主页
+                        </div>
+                    </div>
+                    <div class="span1 action">
+                        <div class="bui-box-vertical">
+                            <i class="icon-tel c-green font-m4x" ></i> 通话
+                        </div>
+                    </div>
+                    <div class="span1 action">
+                        <div class="bui-box-vertical">
+                            <i class="icon-ecode c-teal font-m4x" ></i> 二维码
+                        </div>
+                    </div>
+                    <div class="span1 action">
+                        <div class="bui-box-vertical">
+                            <i class="icon-clock c-dorange font-m4x" ></i> 闹钟
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        
+    </footer>
+</div>
+<script id="chat.art" type="text/html">
+    {{each list obj index}}
+        {{set mine = obj.name == '老郑头'}}
+        {{set media = obj.content.match(/^<img/g) }}
+        <div class="bui-box message {{if mine}}mine{{/if}}">
+            {{if mine}}
+                <div class="span1 message-inner">
+                    <div class="name">{{obj.name}}</div>
+                    <div class="content {{if media}}media-content{{else}}text{{/if}}">{{@ obj.content}}</div>
+                </div>
+                <div class="avatar">
+                    <img src="images/avatar/{{obj.avatar}}">
+                </div>
+            {{else}}
+                <div class="avatar">
+                    <img src="images/avatar/{{obj.avatar}}">
+                </div>
+                <div class="span1 message-inner">
+                    <div class="name">{{obj.name}}</div>
+                    <div class="content {{if media}}media-content{{else}}text{{/if}}">{{@ obj.content}}</div>
+                </div>
+            {{/if}}
+        </div>
+    {{/each}}
+</script>

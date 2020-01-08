@@ -1,0 +1,34 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    <div id="app">
+        <p v-show="visible">点击下方切换按钮，显示或隐藏这一行内容。</p>
+        <p>
+            <span v-show="visible">如果是行内元素，Vue会如何处理呢？</span>
+        </p>
+        <p>
+            <p v-show="visible" style="display: inline;">如果通过css强制定义盒子元素为行内元素呢？Vue又会如何处理？</p>
+        </p>
+        <button type="button" @click="visible = !visible">切换</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                visible: true
+            }
+        })
+    </script>
+
+    <style scoped>
+    </style>
+</body>
+</html>

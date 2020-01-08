@@ -1,0 +1,77 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body{ margin: 0; }
+        img{ max-width: 100%; }
+        .phone .header{ padding: 15px 20px; }
+
+        .slide{ display: flex; }
+        .slide .slide-item{ width: 100%; }
+    </style>
+</head>
+<body>
+
+    
+
+    <div class="phone">
+        <div class="header">
+            
+            
+        </div>
+    </div>
+
+    <div style="margin: 30px; text-align: center;">
+        <button type="button" onclick="next()">下一张</button>
+    </div>
+
+    <script src="../js/jquery-3.4.1.js"></script>
+    <script src="../js/require.js"></script>
+    <script>
+        
+        function nextImage(){
+            var $img = $('.phone .header').find('#img');
+            if(!$img.length){
+                $img = $('<img id="img">').appendTo($('.phone .header'));
+            }
+            var src = $img.attr('src');
+            var index = imgs.indexOf(src);
+            var next = (index < 0 || index >= imgs.length - 1) ? 0 : (index + 1);
+            $img.attr('src', imgs[next]);
+        }
+
+
+        var imgs = [
+            '2.jpg',
+            '3.jpg',
+            '4.jpg',
+            '5.jpg',
+            '6.jpg',
+            '7.jpg',
+            '8.jpg',
+            '9.jpg',
+            '10.jpg',
+        ];
+
+        next();
+
+        function next(){
+            nextImage();
+
+            require(["../js/uiKit.js"], function(uiKit) {
+                'use strict'
+                uiKit.getMainColor($('#img').attr('src'), function(color){
+                    $('.phone .header').css({
+                        backgroundColor: `rgba(${color.r}, ${color.g}, ${color.b}, .75)`
+                    });
+                });
+            });
+        }
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,36 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #ele{   }
+    </style>
+</head>
+<body>
+    
+
+    <div id="ele"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.js"></script>
+    <script>
+        var hammer = new Hammer($('#ele')[0]);
+        hammer.get('pan').set({ direction: Hammer.DIRECTION_ALL });
+        hammer.on('pan', function(e){
+            console.log(e)
+            var $ele = $(e.target);
+            var position = e.center;
+            var se = e.srcEvent;
+            var dx = e.deltaX, dy = e.deltaY;
+
+            
+            $ele.css({
+                transform: `translate3d(${dx}px, ${dy}px, 0)`
+            })
+        })
+    </script>
+
+</body>
+</html>

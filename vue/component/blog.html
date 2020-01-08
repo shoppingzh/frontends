@@ -1,0 +1,73 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    <div id="app">
+        <blog v-for="blog in blogs"
+            v-bind:blog="blog">
+            <template v-slot:relation>
+                <p>相关阅读：<a href="javascript:;">{{relations[blog.key].title}}</a></p>
+            </template>
+        </blog>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script>
+
+        Vue.component('blog', {
+            props: ['blog'],
+            data: function(){
+                return {
+                    
+                }
+            },
+            template: `
+                <div class="blog">
+                    <h3>{{blog.title}}</h3>
+                    <p>{{blog.content}}</p>
+                    <a href="javascript:;" @click="blog.star++">点赞({{blog.star}})</a>
+                    <div class="relation">
+                        <slot name="relation"></slot>
+                    </div>
+                </div>
+            `
+        })
+
+        var app = new Vue({
+            el: '#app',
+            data: {
+                blogs: [{
+                    key: 'b1',
+                    title: '文章一',
+                    content: '编者按：新中国成立70年来，在中国共产党的坚强领导下，我国经济社会发展经历了不平凡的伟大历程，取得了举世瞩目的辉煌成就，“中国号”巨轮乘风破浪，向着民族复兴的伟大目标稳健前行。为充分展现中国特色社会主义制度所带来的政治稳定、经济发展、文化繁荣、社会和谐、生态良好、人民幸福的巨大优势，中央网信办与求是杂志社联合组织策划“中国稳健前行”系列理论文章，邀请思想理论界专家学者进行深入阐述，今日在求是网推出第26篇，敬请关注。',
+                    star: 0
+                }, {
+                    key: 'b2',
+                    title: '文章二',
+                    content: '我国司法制度是党领导人民在长期实践中建立和发展起来的，总体上与我国国情和我国社会主义制度是适应的。在建设中国特色社会主义法治的进程中，特别是十八大以来，我国的司法体制建设日臻完善，诸多改革举措的贯彻落实让司法工作向着“努力让人民群众在每一个司法案件中都感受到公平正义”的目标更进一步。习近平总书记强调指出：“司法体制改革在全面深化改革、全面依法治国中居于重要地位，对推进国家治理体系和治理能力现代化意义重大。”',
+                    star: 0
+                }],
+                relations: {
+                    b1: {
+                        key: 'b3',
+                        title: '文章三'
+                    },
+                    b2: {
+                        key: 'b7',
+                        title: '文章七'
+                    }
+                }
+            }
+        })
+        
+    </script>
+
+    <style scoped>
+    </style>
+</body>
+</html>

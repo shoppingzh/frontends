@@ -1,0 +1,53 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jQuery extend demo</title>
+</head>
+<body>
+
+
+    
+    <script src="../js/jquery-3.4.1.js"></script>
+    <script>
+        var a = {
+            name: 'a',
+            age: 23,
+            city: 'Shenzhen'
+        };
+        var b = {
+            name: 'b',
+            age: 24,
+            gender: false
+        };
+
+
+        console.log('===================START');
+        console.log($.extend(a, b));
+        console.log(a);
+        console.log(b);
+        console.log('END=======================');
+
+
+
+        var a = {
+            name: 'a',
+            age: 23,
+            city: 'Shenzhen'
+        };
+        var b = {
+            name: 'b',
+            age: 24,
+            gender: false
+        };
+        console.log('===================START');
+        console.log($.extend({}, a, b));
+        console.log(a);
+        console.log(b);
+        console.log('END=======================');
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,35 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    <div id="app">
+        <span v-if="visible">我是神秘的元素</span>
+        <button v-on:click="toggle">切换神秘元素的显示</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                visible: false
+            },
+            methods: {
+                toggle: function(){
+                    var visible = app.visible;
+                    app.visible = !visible;
+                }
+            }
+        })
+    </script>
+
+    <style scoped>
+        #app{ color: #f00; }
+    </style>
+</body>
+</html>

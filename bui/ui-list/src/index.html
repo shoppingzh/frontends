@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <title>BUI</title>
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="css/bui.css" />
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+    <!-- 第1步: 开启单页路由 -->
+    <div id="bui-router"></div>
+    <div class="bui-page">
+        <header class="bui-bar">
+            <div class="bui-bar-left">
+                <a class="bui-btn" onclick="bui.back();"><i class="icon-back"></i></a>
+            </div>
+            <div class="bui-bar-main">Hello, world!</div>
+            <div class="bui-bar-right">
+                <!-- 右边按钮 -->
+            </div>
+        </header>
+        <main>
+            
+        </main>
+        <footer>
+            <!-- 底部内容 -->
+        </footer>
+    </div>
+
+    <script src="js/zepto.js"></script>
+    <script src="js/bui.js"></script>
+    <!-- 初始化单页 -->
+    <script src="index.js"></script>
+    <script>
+        var uiReady = bui.ready(function(){
+            // 原生事件初始化
+            // console.log(event)
+        });
+
+        // 焦点图 js 初始化:
+        var uiSlide = bui.slide({
+            id:"#uiSlide",
+            height:380,
+            autopage: true,
+            loop: true
+        });
+        uiSlide.on('to', function (index) {
+            console.log(index);
+        });
+        console.log(uiSlide);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    <div id="app">
+        <input type="number" v-model="count" placeholder="输入数字"> 
+        <br><br>
+        <button type="button" @click="generateRandom(10)">生成随机数字</button>
+        <hr>
+        <div v-if="count <= 5">合法值</div>
+        <div v-else style="color: #f00;">非法值(大于5)</div>
+
+        <template v-if="count <= 5">
+            <p><strong>什么是合法值？</strong></p>
+            <p>合法值指的是小于或等于5以内的数字。</p>
+        </template>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                count: 0
+            },
+            methods: {
+                generateRandom: function(max){
+                    var r = Math.random();
+                    this.count = Number((r * (max || 10)).toFixed(0));
+                }
+            }
+        })
+    </script>
+
+    <style scoped>
+    </style>
+</body>
+</html>

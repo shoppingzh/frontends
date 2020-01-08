@@ -1,0 +1,53 @@
+<style>
+  .invalid{ color: #f00; }
+</style>
+<!-- 这里还是一个标准的BUI页面 -->
+<div class="bui-page">
+  <header class="bui-bar">
+    <div class="bui-bar-left">
+      <!-- 左边有图标示例 -->
+      <div class="bui-btn btn-back"><i class="icon-back"></i></div>
+    </div>
+    <div class="bui-bar-main">BUI单页开发工程模板</div>
+    <div class="bui-bar-right">
+      <!-- 右边有图标示例 -->
+      <div class="bui-btn"><i class="icon-search"></i></div>
+    </div>
+  </header>
+  <main style="background: #fff;">
+      <div class="container-xy">
+          <p style="word-break: break-all;">当前数值数组的内容：<b b-html="page.digitList"></b></p>
+          <p>数组为空吗：<b b-html="page.empty"></b></p>
+          <p>下一个随机值的范围：<span b-class="page.invalid">0 ~ <b b-text="page.multi" ></b><b b-show="page.invalid">(不合法)</b></span></p>
+      </div>
+
+      <hr>
+
+      <div class="container-xy">
+        <div class="bui-box-align-middle">
+          <div class="span10">
+            为此数组添加一个<input type="number" min="0" style="width: 1rem;" b-model="page.multi">(0 ~ 1000)内的随机数
+          </div>
+          <div class="span2">
+            <div id="addBtn" class="bui-btn mini inline success">确定</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container-xy">
+          <div class="bui-box-align-middle">
+              <div class="span10">
+                清空该数组？
+              </div>
+              <div class="span2">
+                <div id="emptyBtn" class="bui-btn mini inline warning">确定</div>
+              </div>
+            </div>
+      </div>
+
+
+  </main>
+  <footer>
+    <!-- 底部内容 -->
+  </footer>
+</div>

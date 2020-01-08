@@ -1,0 +1,22 @@
+[
+    {
+        "title": "首页",
+        "icon": "home",
+        "url": "pages/main/home.html"
+    },
+    {
+        "title": "消息",
+        "icon": "chat",
+        "url": "pages/main/chat.html"
+    },
+    {
+        "title": "购物车",
+        "icon": "shoppingcartfill",
+        "url": "pages/main/shop.html"
+    },
+    {
+        "title": "我的",
+        "icon": "user",
+        "url": "pages/main/user.html"
+    }
+]

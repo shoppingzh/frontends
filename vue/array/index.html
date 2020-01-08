@@ -1,0 +1,40 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    <div id="app">
+        <button @click="generate">生成一个随机数字</button> <strong>{{len}}</strong>
+        <ul v-for="number in numbers">
+            <li>{{number}}</li>
+        </ul>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                numbers: []
+            },
+            computed: {
+                len: function(){
+                    return this.numbers.length;
+                }
+            },
+            methods: {
+                generate: function(){
+                    this.numbers.push(Math.round(Math.random() * 100));
+                }
+            }
+        })
+    </script>
+
+    <style scoped>
+    </style>
+</body>
+</html>

@@ -1,0 +1,27 @@
+{
+    "data": [{
+        "avatar": "1.jpg",
+        "name": "阿兵",
+        "content": "<img src=\"http://img0.imgtn.bdimg.com/it/u=2786741331,312930537&fm=26&gp=0.jpg\">"
+    }, {
+        "avatar": "2.jpg",
+        "name": "大孙子",
+        "content": "徐兵这是吃屎了？"
+    }, {
+        "avatar": "3.jpg",
+        "name": "老郑头",
+        "content": "他可能是脑袋坏的了"
+    }, {
+        "avatar": "4.jpg",
+        "name": "大孙子",
+        "content": "咱也不知道，咱也不敢问"
+    }, {
+        "avatar": "5.jpg",
+        "name": "阿苗",
+        "content": "上网咯，手机上网，3块钱一个小时"
+    }, {
+        "avatar": "6.jpg",
+        "name": "老郑头",
+        "content": "<img src=\"http://img3.imgtn.bdimg.com/it/u=2458489681,2440998846&fm=26&gp=0.jpg\">"
+    }]
+}

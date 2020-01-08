@@ -1,0 +1,226 @@
+.normal .cl_header_left {
+  float: left; }
+  .normal .cl_header_left i {
+    color: #C7C7CC; }
+.normal .cl_header_right {
+  float: right; }
+  .normal .cl_header_right i {
+    color: #C7C7CC; }
+.normal .calender_content {
+  height: 100%;
+  background-color: #fff;
+  padding: 0 .173rem;
+  border-radius: 4px; }
+.normal .cl_header {
+  height: 0.6rem;
+  line-height: .6rem;
+  text-align: center; }
+.normal .cl_header_main {
+  display: inline-flex; }
+  .normal .cl_header_main .month {
+    font-size: .2592rem; }
+  .normal .cl_header_main .week {
+    font-size: .2592rem; }
+  .normal .cl_header_main .year {
+    font-size: .216rem; }
+  .normal .cl_header_main .date {
+    font-size: .216rem; }
+.normal .cl_content {
+  padding: 0 .18rem .0rem .18rem; }
+.normal .week_name div.weekitem {
+  float: left;
+  width: 14.16%;
+  text-align: center;
+  font-size: .1439rem;
+  opacity: .8;
+  padding-bottom: .05rem; }
+.normal .day_name div.dayitem {
+  float: left;
+  width: 14.28%;
+  text-align: center;
+  font-size: .2592rem;
+  border-bottom: 1px solid #f6f6f6;
+  position: relative;
+  border-radius: 3px;
+  -webkit-border-radius: 3px; }
+  .normal .day_name div.dayitem div.point {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    left: 50%;
+    margin-left: -2.5px;
+    top: 20%;
+    background-color: #ccc;
+    background-color: transparent; }
+  .normal .day_name div.dayitem div.lunar_calender {
+    font-size: 10px;
+    width: 100%;
+    position: absolute;
+    text-align: center;
+    bottom: 0%;
+    height: 0.2rem;
+    line-height: 0.2rem;
+    opacity: 0.6; }
+  .normal .day_name div.dayitem div.workday {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background: transparent;
+    background-repeat: no-repeat;
+    background-size: contain;
+    top: 20%;
+    right: 10%; }
+    .normal .day_name div.dayitem div.workday.work {
+      background-image: url(../images/work.png); }
+    .normal .day_name div.dayitem div.workday.rest {
+      background-image: url(../images/rest.png); }
+.normal .day_name div.dayitem:nth-child(7n), .normal .day_name div.dayitem:nth-child(7n+1), .normal .day_name .day_name div.mpast, .normal .day_name .day_name div.mnext {
+  color: rgba(0, 0, 0, 0.5); }
+.normal .day_name div.dayitem.click {
+  color: #fff;
+  background-color: #F78864; }
+.normal .day_name div.dayitem.current {
+  color: #fff;
+  background-color: #EE2D31; }
+
+.miui {
+  /* .cl_header_left{
+  	float: left;
+  	i{
+  		color: #C7C7CC;
+  	}
+  }
+  .cl_header_right{
+  	float: right;
+  	i{
+  		color: #C7C7CC;
+  	}
+  } */ }
+  .miui .calender_content {
+    height: 100%;
+    background-color: #fff; }
+  .miui .cl_header {
+    height: 0.75rem;
+    line-height: .6rem;
+    color: #fff;
+    background-color: #3fbb7c; }
+  .miui .cl_header_main {
+    display: inline-block; }
+    .miui .cl_header_main .month {
+      font-size: .36rem;
+      float: left;
+      padding-left: .173rem; }
+    .miui .cl_header_main .right_box {
+      display: inherit;
+      height: .6rem;
+      padding-left: .073rem; }
+      .miui .cl_header_main .right_box .year {
+        font-size: .1439rem;
+        line-height: .45rem; }
+      .miui .cl_header_main .right_box .date {
+        font-size: .1439rem;
+        line-height: 0rem; }
+    .miui .cl_header_main .week {
+      font-size: .2592rem; }
+  .miui .right_btn {
+    float: right;
+    height: .6rem;
+    display: inline-flex;
+    padding-right: .3rem; }
+    .miui .right_btn .cl_header_left {
+      margin-right: 1.8rem; }
+  .miui .cl_content {
+    padding: 0; }
+  .miui .week_name div.weekitem {
+    float: left;
+    width: 14.28%;
+    text-align: center;
+    font-size: .1296rem;
+    padding-bottom: .1rem;
+    padding-top: .07rem;
+    color: #fff;
+    background-color: #3fbb7c; }
+  .miui .day_name div.dayitem {
+    float: left;
+    width: 14.28%;
+    text-align: center;
+    font-size: .216rem;
+    border: none;
+    position: relative;
+    border-radius: 100%;
+    -webkit-border-radius: 100%; }
+    .miui .day_name div.dayitem div.point {
+      position: absolute;
+      width: 5px;
+      height: 5px;
+      border-radius: 5px;
+      -webkit-border-radius: 5px;
+      left: 50%;
+      margin-left: -2.5px;
+      top: 20%;
+      background-color: transparent;
+      overflow: hidden; }
+      .miui .day_name div.dayitem div.point.todo {
+        background-color: #F08F43; }
+      .miui .day_name div.dayitem div.point.done {
+        background-color: #45BA7D; }
+    .miui .day_name div.dayitem div.lunar_calender {
+      font-size: 10px;
+      width: 100%;
+      position: absolute;
+      text-align: center;
+      bottom: 0%;
+      height: 0.2rem;
+      line-height: 0.2rem;
+      opacity: 0.6; }
+    .miui .day_name div.dayitem div.workday {
+      position: absolute;
+      width: 15px;
+      height: 15px;
+      background: transparent;
+      background-repeat: no-repeat;
+      background-size: contain;
+      top: 20%;
+      right: 10%; }
+      .miui .day_name div.dayitem div.workday.work {
+        background-image: url(../images/work.png); }
+      .miui .day_name div.dayitem div.workday.rest {
+        background-image: url(../images/rest.png); }
+  .miui .day_name div.dayitem:nth-child(7n), .miui .day_name div.dayitem:nth-child(7n+1), .miui .day_name div.mpast, .miui .day_name div.mnext {
+    color: rgba(0, 0, 0, 0.5); }
+  .miui .day_name div.dayitem .num {
+    border-radius: 100%;
+    -webkit-border-radius: 100%;
+    margin-top: 10%;
+    height: 60%;
+    border: 1px solid transparent; }
+  .miui .day_name div.dayitem.click .num {
+    border-radius: 100%;
+    -webkit-border-radius: 100%;
+    margin-top: 10%;
+    height: 60%;
+    border: 1px solid #ccc; }
+  .miui .day_name div.dayitem.click .lunar_calender {
+    color: transparent; }
+  .miui .day_name div.dayitem.click .workday {
+    background: transparent !important; }
+  .miui .day_name div.dayitem.click .point {
+    background-color: transparent !important; }
+  .miui .day_name div.dayitem.current .num {
+    color: #fff;
+    border-radius: 100%;
+    -webkit-border-radius: 100%;
+    margin-top: 10%;
+    height: 60%;
+    border: 1px solid #3fbb7c;
+    background-color: #3fbb7c; }
+  .miui .day_name div.dayitem.current .lunar_calender {
+    color: transparent; }
+  .miui .day_name div.dayitem.current .workday {
+    background: transparent !important; }
+  .miui .day_name div.dayitem.current .point {
+    background-color: transparent !important; }
+
+/*# sourceMappingURL=calender.css.map */

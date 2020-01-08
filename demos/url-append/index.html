@@ -1,0 +1,90 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>URL拼接示例</title>
+    <style>
+        body>div{ margin-bottom: 15px; }
+    </style>
+</head>
+<body>
+
+
+    <div>
+        <label>Part 1（IP:端口/[虚拟路径]）:</label>
+        <input id="part1" type="text" value="https://www.baidu.com">
+    </div>
+
+    <div>
+        <label>Part 2 （请求路径?[参数][#hash]）:</label>
+        <input id="part2" type="text" value="search??word=hello">
+    </div>
+
+    <div>
+        <button id="doBtn" type="button">计算</button>
+    </div>
+    <div id="result"  style="margin-top: 15px;">
+
+    </div>
+
+    <div>
+        <h3>该函数会自动完成的事情：</h3>
+        <ol>
+            <li>自动加上正斜杠</li>
+            <li>自动将多余的正斜杠删除</li>
+            <li>自动将多余的问号删除</li>
+        </ol>
+    </div>
+
+    <script src="../js/jquery-3.4.1.js"></script>
+    <script>
+        $('#doBtn').click(function(){
+            var p1 = $('#part1').val(),
+                p2 = $('#part2').val();
+            var result = urlAppend(p1, p2);
+            console.log(result);
+            $('#result').text(result);
+        });
+
+        function urlAppend(left, right){
+            var hasSlash = /\/$/.test(left) || /^\//.test(right);
+            var full = `${left}${!hasSlash ? '/' : ''}${right}`;
+            // var protocolIndex = full.match(/(?<=https?:\/\/)/).index;
+            // var pathname = full.substring(protocolIndex).replace(/(\/|\?)\1+/g, '$1');
+            // full = full.replace(/(?<=https?:\/\/)(\/)\1+/g, '$1');
+            // full = full.replace(/(?<!https?:)(\/)\1+/gi, '/');
+            // return full.substring(0, protocolIndex) + pathname;
+            return full.replace(/(?<!https?:)(\/)\1+/g, '$1').replace(/(\?)\1+/g, '$1');
+        }
+
+        function url_append(left, right, separator){
+            var leftReg = new RegExp(separator + '$');
+            var rightReg = new RegExp('^' + separator);
+        }
+
+        function url_adjust(url){
+            return url.replace(/(?<!https?:)(\/)\1+/g, '$1').replace(/(\?)\1+/g, '$1');
+        }
+
+        // console.log(/(?<=https?:\/\/)f{2,}/.test('http://www.baidu.com/fff'));
+        // console.log(/(\/)\1{2,}/.test('fafd//afdsfsd////ffdsfs'));
+        // console.log('fafd//afdsfsd////ffdsfs'.replace(/(\/)\1{1,}/g, '$1'))
+        // var reg = /(?<=https?:\/\/)(\/)\1+/g;
+        // var str = 'http:///////www.baidu.com//search///hello???word=111';
+        // var arr = str.match(reg);
+        // console.log(arr)
+        // console.log(reg.exec(str))
+        // console.log(str.replace(/\/{2,}/g, '/'))
+        // str.replace(reg, function(match, p1, index, origin){
+        //     console.log(match)
+        //     console.log(p1)
+        //     console.log(index)
+        //     console.log(origin)
+        // })
+        // console.log(str.match(/(?<=https?:\/\/)/).index)
+        // console.log(str.substring(str.match(/(?<=https?:\/\/)/).index))
+    </script>
+    
+</body>
+</html>

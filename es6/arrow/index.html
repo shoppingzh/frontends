@@ -1,0 +1,44 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    <button id="output1">输出到dom</button>
+    <button id="output2">输出到控制台</button>
+    <button id="output3">输出到浏览器弹窗</button>
+
+    <p id="post"></p>
+
+    <script>
+
+        document.querySelector('#output1').addEventListener('click', function(){
+            output('hello', text => {
+                document.querySelector('#post').innerHTML = text;
+            })
+        })
+
+        document.querySelector('#output2').addEventListener('click', function(){
+            output('hello', text => {
+                console.info(text)
+            })
+        })
+
+        document.querySelector('#output3').addEventListener('click', function(){
+            output('hello', text => {
+                alert(text)
+            })
+        })
+
+        // 统一输出接口
+        function output(text, writer){
+            writer(text);
+        }
+        
+    </script>
+    
+</body>
+</html>

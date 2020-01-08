@@ -1,0 +1,33 @@
+<style>
+  .over{ color: #f00; }
+</style>
+<!-- 这里还是一个标准的BUI页面 -->
+<div class="bui-page">
+  <header class="bui-bar">
+    <div class="bui-bar-left">
+      <!-- 左边有图标示例 -->
+      <div class="bui-btn btn-back"><i class="icon-back"></i></div>
+    </div>
+    <div class="bui-bar-main">BUI单页开发工程模板</div>
+    <div class="bui-bar-right">
+      <!-- 右边有图标示例 -->
+      <div class="bui-btn"><i class="icon-search"></i></div>
+    </div>
+  </header>
+  <main>
+    <!-- 中间内容 -->
+
+    <div class="bui-btn" b-click="page.generate">添加一个随机值</div>
+    <p b-class="page.over">数组长度：<b b-text="page.list.length"></b></p>
+    <ul b-template="page.tplList(page.list)"></ul>
+
+  </main>
+  <footer>
+    <!-- 底部内容 -->
+  </footer>
+</div>
+<script id="tplList" type="text/html">
+  {{each list obj index}}
+    <li b-class="page.even"> {{obj}}</li>
+  {{/each}}
+</script>

@@ -1,0 +1,37 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../js/zepto.js"></script>
+    <script src="../js/touch.min.js"></script>
+    <style>
+        #container{
+            width: 200px;
+            height: 200px;
+            border: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="container"></div>
+    <h3>按下上方方框（点击变绿，长按变红）</h3>
+
+    <script>
+        // touch.config.tap = false;
+        console.log(touch)
+        
+        $('#container').on('tap', function(){
+            $('#container').css('background-color', '#0f0');
+        });
+        touch.on('#container', 'hold', function(e){
+            console.log(e);
+            $('#container').css('background-color', '#f00');
+        });
+
+    </script>
+    
+</body>
+</html>

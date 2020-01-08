@@ -1,0 +1,66 @@
+<html lang="ch">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="video-js.min.css" rel="stylesheet">
+    <!-- <link href="amazeui.videojs.css" rel="stylesheet"> -->
+
+    <style>
+        body{ margin: 0; }
+        video{ max-width: 100%; }
+        .video-js{ font-size: 14px; }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+
+    <video id="video" playsinline preload class="video-js">
+        <source src="video.mp4"></source>
+    </video>
+
+    <script src="video.min.js"></script>
+    <script src="video.zh-CN.js"></script>
+    <script src="videojs-mobile-ui.min.js"></script>
+    <script>
+        var player = videojs('video', {
+            language: 'zh-CN',
+            controls: true,
+            autoplay: false,                   // 不自动播放
+            preload: true,
+            fluid: true,                       // 宽高自适应
+            controlBar: {
+                pictureInPictureToggle: false, // 关闭画中画
+                fullscreenToggle: false        // 关闭全屏
+            }
+        });
+        player.ready(function(){
+            // player.addClass('video-js');
+            // console.log(player.buffered())
+            // player.isFullscreen(true)
+            // console.log(player.isFullscreen())
+            // 移除播放器
+            // player.dispose();
+        })
+
+        player.mobileUi();
+
+        
+
+        setTimeout(() => {
+            videojs.getAllPlayers().forEach(function(p){
+                p.pause();                
+            })
+        }, 3000);
+
+        var ControlBar = videojs.getComponent('ControlBar');
+        var controlBar = new ControlBar(player);
+        console.log(controlBar)
+        
+        // 移除全屏组件
+        // player.removeChild(FullScreenToggle)
+
+    </script>
+    
+</body>
+</html>

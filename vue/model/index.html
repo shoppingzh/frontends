@@ -1,0 +1,114 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    <div id="app">
+        <div class="left">
+            <div class="line">
+                <label class="label">姓名</label>
+                <input type="text" v-model="name">
+            </div>
+            <div class="line">
+                <label class="label">性别</label>
+                <label><input type="radio" name="gender" v-model="gender" value="true">男</label>
+                <label><input type="radio" name="gender" v-model="gender" value="false">女</label>
+            </div>
+            <div class="line">
+                <label class="label">兴趣爱好</label>
+                <label v-for="obj in hobbies">
+                    <input type="checkbox" name="hobby" v-model="hobby" v-bind:value="obj.value">{{obj.name}}
+                </label>
+                <label></label>
+            </div>
+            <div class="line">
+                <label class="label">民族</label>
+                <select name="nation" v-model="nation">
+                    <option value disabled>请选择</option>
+                    <option v-for="obj in nations" v-bind:value="obj.value">{{obj.name}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="right">
+            <h3>我的个人信息</h3>
+            <div class="line">姓名：{{name}}</div>
+            <div class="line">性别：{{genderText}}</div>
+            <div class="line">兴趣爱好：{{hobbyText}}</div>
+            <div class="line">名族：{{nationText}}</div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                hobbies: [{
+                    name: '篮球', value: '1'
+                }, {
+                    name: '足球', value: '2'
+                }, {
+                    name: '绘画', value: '3'
+                }, {
+                    name: '阅读', value: '4'
+                }, {
+                    name: '编程', value: '5'
+                }],
+                nations: [{
+                    name: '汉族', value: '1'
+                }, {
+                    name: '回族', value: '2'
+                }, {
+                    name: '锡伯族', value: '3'
+                }, {
+                    name: '维吾尔族', value: '4'
+                }],
+                name: '',
+                gender: 'true',
+                hobby: [],
+                nation: ''
+            },
+            computed: {
+                genderText: function(){
+                    var gender = this.gender;
+                    return gender == 'true' ? '男' : '女';
+                },
+                hobbyText: function(){
+                    var list = this.hobbies;
+                    var hobby = this.hobby;
+                    var names = [];
+                    hobby.forEach(function(obj, index){
+                        var found = list.find(function(entity){
+                            return entity.value == obj;
+                        })
+                        if(found){
+                            names.push(found.name);
+                        }
+                    })
+                    return names.join('，');
+                },
+                nationText: function(){
+                    var list = this.nations;
+                    var nation = this.nation;
+                    var found = list.find(function(entity){
+                        return entity.value == nation;
+                    })
+                    return found ? found.name : '';
+                }
+            }
+        })
+    </script>
+
+    <style scoped>
+        .left,.right{ display: inline-block; box-sizing: border-box; float: left; min-height: 200px; }
+        .left{ width: 40%; border-right: 2px solid #ccc; }
+        .right{ width: 60%; padding-left: 30px; }
+        .line{ margin-bottom: 10px; }
+        .line .label{ width: 40px;  margin-right: 5px; font-weight: bold; }
+    </style>
+</body>
+</html>

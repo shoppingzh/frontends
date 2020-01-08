@@ -1,0 +1,40 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+</head>
+<body>
+
+    <p><input placeholder="输入链接" id="url" value="https://www.baidu.com:8080/module1/search/wiki?ie=UTF-8&wd=32324#spring" style="width: 100%;"></p>
+    <p><button id="doBtn">解析参数</button></p>
+    <p><button id="doBtn2">解析URL</button></p>
+
+    <div id="result"></div>
+
+    <script src="../js/util.js"></script>
+    <script>
+        document.querySelector('#doBtn').addEventListener('click', function(){
+            var url = document.querySelector('#url').value;
+            document.querySelector('#result').innerHTML = JSON.stringify(parseParam(url));
+        });
+        document.querySelector('#doBtn2').addEventListener('click', function(){
+            var url = document.querySelector('#url').value;
+            var reg = /(https?:\/\/)?(\w+(\.\w+)*)(:(\d+))?(((\/[A-z1-9\.-_]+)*)(\?[^\#]*)?(#.*)?)?/g;
+            var result = reg.exec(url);
+            console.log(result)
+            var html = `
+                <p>协议：${result[1]}<p>
+                <p>主机：${result[2]}</p>
+                <p>端口：${result[5] || '无'}<p>
+                <p>路径：${result[7]}</p>
+                <p>查询：${result[9]}</p>
+                <p>哈希：${result[10]}</p>
+            `;
+            document.querySelector('#result').innerHTML = html;
+        });
+    </script>
+    
+</body>
+</html>

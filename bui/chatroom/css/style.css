@@ -1,0 +1,73 @@
+@charset "utf-8";
+
+/* font */
+.font-s1x { font-size: .2rem!important; }
+.font-s2x { font-size: .24rem!important; }
+.font-s3x { font-size: .28rem!important; }
+.font-s4x { font-size: .32rem!important; }
+.font-s5x { font-size: .36rem!important; }
+.font-m1x { font-size: .4rem!important; }
+.font-m2x { font-size: .48rem!important; }
+.font-m3x { font-size: .56rem!important; }
+.font-m4x { font-size: .64rem!important; }
+.font-m5x { font-size: .72rem!important; }
+.font-l1x { font-size: .8rem!important; }
+.font-l2x { font-size: .92rem!important; }
+.font-l3x { font-size: 1.04rem!important; }
+.font-l4x { font-size: 1.16rem!important; }
+.font-l5x { font-size: 1.28rem!important; }
+
+/* color */
+.c-blue{ color: #2196f3!important; }
+.c-lblue{ color: #5ac8fa!important; }
+.c-green{ color: #4cd964!important; }
+.c-yellow{ color: #ffcc00!important; }
+.c-orange{ color: #ff9500!important; }
+.c-dorange{ color: #ff6b22!important; }
+.c-pink{ color: #ff2d55!important; }
+.c-red{ color: #ff3b30!important; }
+.c-teal{ color: #009688!important; }
+.c-lime{ color: #cddc39!important; }
+.c-purple{ color: #9c27b0!important; }
+.c-dpurple{ color: #673ab7!important; }
+.c-fff{ color: #fff!important; }
+.c-eee{ color: #eee!important; }
+.c-ddd{ color: #ddd!important; }
+.c-ccc{ color: #ccc!important; }
+.c-bbb{ color: #bbb!important; }
+.c-aaa{ color: #aaa!important; }
+.c-999{ color: #999!important; }
+.c-666{ color: #666!important; }
+.c-333{ color: #333!important; }
+.c-111{ color: #111!important; }
+.c-000{ color: #000!important; }
+.b-blue{ background-color: #2196f3!important; }
+.b-lblue{ background-color: #5ac8fa!important; }
+.b-green{ background-color: #4cd964!important; }
+.b-yellow{ background-color: #ffcc00!important; }
+.b-orange{ background-color: #ff9500!important; }
+.b-dorange{ background-color: #ff6b22!important; }
+.b-pink{ background-color: #ff2d55!important; }
+.b-red{ background-color: #ff3b30!important; }
+.b-teal{ background-color: #009688!important; }
+.b-lime{ background-color: #cddc39!important; }
+.b-purple{ background-color: #9c27b0!important; }
+.b-dpurple{ background-color: #673ab7!important; }
+.b-fff{ background-color: #fff!important; }
+.b-eee{ background-color: #eee!important; }
+.b-ddd{ background-color: #ddd!important; }
+.b-ccc{ background-color: #ccc!important; }
+.b-bbb{ background-color: #bbb!important; }
+.b-aaa{ background-color: #aaa!important; }
+.b-999{ background-color: #999!important; }
+.b-666{ background-color: #666!important; }
+.b-333{ background-color: #333333!important; }
+.b-111{ background-color: #111!important; }
+.b-000{ background-color: #000!important; }
+
+/* link */
+.link{ color: #39a4ff; }
+.link:active{ color: #7bbdf5; }
+
+/* 浮动按钮 */
+.float-btn{ position: absolute; right: .5rem; bottom: .8rem; width: 1rem; height: 1rem; line-height: 1rem; padding: 0; border-radius: 50%; text-align: center; border: none; }

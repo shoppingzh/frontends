@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=3.0&ak=0MRAna157NSriBp8U5wwx52z8Gtlv0rj"></script>
+</head>
+<body>
+
+    <div>
+        <button onclick="getCurrCity();">获取当前城市</button>
+        <div>当前城市为：<b id="currCity"></b></div>
+    </div>
+    
+
+    <script type="text/javascript"> 
+
+        function getCurrCity(){
+            var myCity = new BMap.LocalCity();
+            console.log(myCity);
+            myCity.get(myFun);
+        }
+
+	    function myFun(result){
+            console.log(result)
+            var cityName = result.name;
+            document.querySelector('#currCity').innerHTML = cityName;
+        }
+
+    </script>  
+
+</body>
+</html>

@@ -1,0 +1,30 @@
+@font-face {font-family: "icons";
+  src: url('iconfont.eot?t=1564300535725'); /* IE9 */
+  src: url('iconfont.eot?t=1564300535725#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('data:application/x-font-woff2;charset=utf-8;base64,d09GMgABAAAAAAPQAAsAAAAAB9AAAAOBAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHEIGVgCDFAqDOIJ+ATYCJAMQCwoABCAFhEkHRxvDBhHVm/nIfh7G4DwtyBkhNEcRGhTpbvtVKDsa73s89L/f//acM/d+MUU1eyepJkKH0CiBrJIJzVc3CfH94I7+VdNJ8gio8wj9SSgANtccgTER6km+HXn0heRhpUszOrim/oqgzgYg2UUzGnBU0UA24AbwDWNXXsRmAr0WiUOOGZrbQ7dk9ArErZAgH+hOyWRNcugW2pKJiSDV0OguJegB7vrPj9/2RjcomgrGwBM3Dfzh0DfSpyEsm8h23kWAPp4GbBoV24EkLpfqzqqhbztMr9I67QRaKZSxLAThowdpKqc1vRQB/7xowUjsB/uhv/KN1CZT+EZJJvhGxXeDmBR0h4E7eIIF8/7SIZTN9Nz8aU1lDC4NIww+DQ309vXN8ePXM/o2ltJ71zcyuTW1Mjo2NjH5NY0x+dheXTniuFPZpcYyTnb5weHiwj4NKRPYtBAROzYaIitT2L2UYZjhnram9w88u3Kaw82WtBbl5w9OVtgvHC5tAhrKmIKYzp1wR9JBIhdJS+UvzI/QiVx07mHUYQWU7r1noqJnli34WeukhKwIx80iWdkiryO+4UhGS0y24mctltWL9rpDh+bPVN3BC5qCBhUXhCCqwdKurrZaNQRJmdEgNKX0HqbrYOwaB3B9nxK5vlbpwrkE3dY93MyFOP8uClLn5uRkO/DmMuiqeXmsmVl0H5n+sLu9zmJDb8Zg+VlQsM81WpBP86CI6c3ygxAm4/AQY6ZDCQFlA9quLvtaZUGIRucf0ZgYFgI6X+oyRkd8JeaTHDP/fZ28eF+Y5kWl/q277xqcX/wSfviUdqjGxBCgW7kJvp8lSaQG+cZSmYYnE0CCf37hVwikY72pblGvXnTAMI16HIM/MQMNGxoTMRRdZqFqrKAStxEafbZxWi44CKHXNmrT+4wJVEWSAFulAAi97kEx6D5Uvd6iEvcOGpOOodXrK/Q66f+CfTbGcVLswKgELeg/DCYGsqSyC3LyFbu3U4xoTrsnch5igLqo0sELBuR+Q/Kna0QIiKOH8wDboXMREscRjRS9SGrLkspuVJjoJzsHRiVoQf9hMDGQa5Jd7td8xe7tFKOyUPNElYqpsDnURVWHuvBCfdU5h+dP14gQEEyMHs6rwKNzOkjl7UY0UvQ9PKktzUbUllfMLPCPi8rqMIZllKiR0dhfi84dmpgGz7vJojhAL6STCQAAAA==') format('woff2'),
+  url('iconfont.woff?t=1564300535725') format('woff'),
+  url('iconfont.ttf?t=1564300535725') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+  url('iconfont.svg?t=1564300535725#icons') format('svg'); /* iOS 4.1- */
+}
+
+[class^="icons-"], .icons{
+  font-family: "icons" !important;
+  display: inline-block;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icons-collectfill:before {
+  content: "\e60e";
+}
+
+.icons-starfill:before {
+  content: "\e60a";
+}
+
+.icons-star:before {
+  content: "\e60f";
+}
+

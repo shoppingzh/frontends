@@ -1,0 +1,46 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    <canvas id="container" style="width: 100%;"></canvas>
+
+    <script src="js/f2.min.js"></script>
+    <script>
+        var data = [{
+            name: '老郑头',
+            age: 23,
+            percent: 0.5,
+            all: 1
+        }, {
+            name: '愣头青',
+            age: 18,
+            percent: 0.3,
+            all: 1,
+        }, {
+            name: '铁头娃',
+            age: 16,
+            percent: 0.2,
+            all: 1
+        }]
+        var chart = new F2.Chart({
+            id: 'container',
+            pixelRatio: window.devicePixelRatio
+        });
+
+        chart.source(data);
+
+        chart.legend({
+            position: 'right'
+        });
+
+        chart.interval().position('name*age').color('name');
+        chart.render();
+    </script>
+    
+</body>
+</html>

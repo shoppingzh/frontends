@@ -1,0 +1,113 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body{ margin: 0; }
+        .container{ position: relative; }
+        .container .item{ width: 200px; background-color: cyan; box-sizing: border-box; border: 2px solid #fff; position: absolute; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div> -->
+    </div>
+    <script src="../js/jquery-3.4.1.js"></script>
+    <script>
+        var $c = $('.container');
+        // 准备内容
+        var count = 50;
+        for(var i = 0; i < count; i++){
+            var $item = $('<div class="item">');
+            $item.css('height', randomInt(50, 500));
+            $item.appendTo($c);
+        }
+        // 渲染
+        render(Math.floor($(window).width() / 200));
+
+        
+
+        var lastTimeStamp, timer;
+        window.onresize = function(e){
+            var ts = e.timeStamp;
+            if(lastTimeStamp && ts - lastTimeStamp < 300){
+                clearTimeout(timer);
+            }
+            timer = setTimeout(() => {
+                render(Math.floor($(window).width() / 200));
+            }, 300);
+            lastTimeStamp = ts;
+        }
+
+        function render(cols){
+            console.log('渲染列数：' + cols);
+            // 存放每个列对应的top数据
+            var cache = {};
+            $c.find('.item').each(function(){
+                var $item = $(this),
+                    index = $item.index();
+                var pos = position(index, cols);
+                var col = pos.col, minTop = 0;
+                var keys = Object.keys(cache);
+                if(cols == keys.length){
+                    keys.forEach(function(key){
+                        var top = cache[key] || 0;
+                        if(minTop == 0 || minTop > top){
+                            minTop = top;
+                            col = key;
+                        }
+                    })
+                }
+                $item.animate({
+                    left: col * 200 + 'px',
+                    top: minTop + 'px'
+                });
+                cache[col] = minTop + $item.outerHeight();
+                // console.log(cache)
+            })
+        }
+
+        function position(index, cols){
+            var row = parseInt(index / cols);
+            var col = index % cols;
+            return {
+                row: row,
+                col: col
+            };
+        }
+
+        function randomInt(min, max){
+            return parseInt(Math.random() * (max - min) + min);
+        }
+
+        
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,43 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #ele{ width: 200px; height: 200px; background-color: #eee; }
+        #inner{ width: 100px; height: 100px; background-color: orange; }
+    </style>
+</head>
+<body>
+
+    <div id="ele"></div>
+    <br>
+    <button id="btn">添加动态元素</button>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.js"></script>
+    <script>
+       
+        var hammer = new Hammer($('#ele')[0]);
+        console.log(hammer)
+        hammer.on('press', function(e){
+            var $ele = $(e.target);
+            $ele.css('background-color', 'pink');
+        });
+        // 事件委托
+        hammer.on('doubletap', function(e){
+            var $ele = $(e.target);
+            if($ele.is('#inner')){
+                $ele.css('background-color', 'green');
+            }
+        })
+
+
+        $('#btn').on('click', function(){
+            $('<div id="inner">').appendTo($('#ele'));
+        })
+
+    </script>
+</body>
+</html>

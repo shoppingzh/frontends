@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-      
       <div class="app-container">
         <div class="left">
           <draggable v-model="leftList" group="column" @start="drag = true" @end="handleEnd" ghost-class="ghost">
@@ -10,6 +9,7 @@
                 :key="item.id"
                 :title="item.name"
                 :height="item.height"></panel>
+              <div v-if="!leftList.length" style="height: 10px;" key="left-default"></div>
             </transition-group>
           </draggable>
         </div>
@@ -21,18 +21,20 @@
                 :key="item.id"
                 :title="item.name"
                 :height="item.height"></panel>
+              <div v-if="!centerList.length" style="height: 10px;" key="center-default"></div>
             </transition-group>
           </draggable>
 
         </div>
         <div class="right">
           <draggable v-model="rightList" group="column" @start="drag = true" @end="handleEnd" ghost-class="ghost">
-            <transition-group type="transition" name="flip-list">  
+            <transition-group type="transition" name="flip-list">
               <panel
                 v-for="item in rightList"
                 :key="item.id"
                 :title="item.name"
                 :height="item.height"></panel>
+              <div v-if="!rightList.length" style="height: 10px;" key="right-default"></div>
             </transition-group>
           </draggable>
         </div>

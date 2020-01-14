@@ -1,0 +1,28 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    #play{ border: none; padding: 8px 12px; color: #fff; background-color: #409eff; border-radius: 4px; overflow: hidden; cursor: pointer; }
+    #play:hover{ opacity: .75; transition: all .3s; }
+
+    .overlay{ position: fixed; left: 0; top: 0; bottom: 0; right: 0; background-color: rgba(0, 0, 0, 1); opacity: .75; z-index: 10000; }
+
+    .overlay-stage{ position: absolute; left: 5px; top: 45px; width: 60px; height: 45px; background-color: rgba(255, 255, 255, 1); z-index: 10003; border-radius: 5px; }
+    .overlay-item{ z-index: 10004; position: relative; }
+  </style>
+</head>
+<body>
+
+  <h3>嘿，点击下方的“观看”按钮就可以开始播放视频了哦！</h3>
+
+  <button id="play" class="overlay-item">播放</button>
+
+
+  <div class="overlay"></div>
+  <div class="overlay-stage"></div>
+  
+</body>
+</html>

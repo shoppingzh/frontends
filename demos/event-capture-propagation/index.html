@@ -1,0 +1,67 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    #container{ width: 500px; height: 500px; background-color: #eee; }
+    #main{ width: 200px; height: 200px; background-color: pink; }
+    #sub{ width: 100px; height: 100px; background-color: darkseagreen; }
+  </style>
+</head>
+<body>
+
+  <div id="container">
+    <div id="main">
+      <div id="sub"></div>
+    </div>
+  </div>
+
+  <script>
+    var container = document.querySelector('#container')
+    var main = document.querySelector('#main')
+    var sub = document.querySelector('#sub')
+
+    /*
+      以下的事件绑定方式的效果为：
+      1. 点击最外层，打印1次
+      2. 点击中间层，打印2次
+      3. 点击最内层，打印3次
+      为什么？
+      三个元素均绑定了点击事件，以最内层为例，
+      当点击该层时，事件往上层冒泡，因此会同时被中间层、最外层的事件处理函数处理
+    */
+    // container.addEventListener('click', function(e){
+    //   console.log(e)
+    // }, false)
+
+    // main.addEventListener('click', function(e){
+    //   console.log(e)
+    // }, false)
+
+    // sub.addEventListener('click', function(e){
+    //   console.log(e)
+    // }, false)
+
+    /*
+      当多层元素都绑定了点击事件时，如何才能不同时触发，而只是最内层触发呢？
+      当第三个参数为true时，表示在事件捕获阶段就调用事件处理函数，而不是等到从目标对象冒泡回来才调用
+    */
+    container.addEventListener('click', function(e){
+      console.log(e)
+    }, false)
+
+    main.addEventListener('click', function(e){
+      console.log(e)
+      e.stopPropagation()
+    }, true)
+
+    // sub.addEventListener('click', function(e){
+    //   console.log(e)
+    // }, true)
+
+  </script>
+  
+</body>
+</html>

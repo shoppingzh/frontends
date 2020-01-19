@@ -1,0 +1,45 @@
+@font-face {font-family: "icon";
+  src: url('../assets/fonts/iconfont.eot?t=1579427653169'); /* IE9 */
+  src: url('../assets/fonts/iconfont.eot?t=1579427653169#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('../assets/fonts/iconfont.woff?t=1579427653169') format('woff'),
+  url('../assets/fonts/iconfont.ttf?t=1579427653169') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+  url('../assets/fonts/iconfont.svg?t=1579427653169#icon') format('svg'); /* iOS 4.1- */
+}
+
+.icon {
+  display: inline-block;
+  font-family: "icon" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-jiedian:before {
+  content: "\e62a";
+}
+
+.icon-biaoqian:before {
+  content: "\e608";
+}
+
+.icon-biaoqian1:before {
+  content: "\e629";
+}
+
+.icon-wenzhang:before {
+  content: "\e62f";
+}
+
+.icon-fenlei:before {
+  content: "\e695";
+}
+
+.icon-fabu:before {
+  content: "\e600";
+}
+
+.icon-biaoqian2:before {
+  content: "\e61b";
+}
+

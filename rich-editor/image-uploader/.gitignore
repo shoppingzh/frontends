@@ -1,0 +1,7 @@
+*.svn
+*.git
+.vscode
+
+node_modules
+upload
+package-lock.json

@@ -1,3 +1,5 @@
+import http from '../utils/http'
+
 export default {
   selector: '#editor',
   language: 'zh_CN',
@@ -16,13 +18,24 @@ export default {
   ],
   // image_advtab: true, // 配置图片高级选项
   automatic_uploads: true,
-  images_upload_handler: (blob, success, failure) => {
-    console.log(blob)
+  images_upload_handler: (blobinfo, success, failure) => {
+    console.log(blobinfo)
     // 此处实现上传逻辑
     // TODO 暂时模拟实现
-    setTimeout(() => {
-      success('https://cdn2.codefund.app/Ysqgpoar4zZH7Ap1XkkhmKaY')
-    }, 2000);
+    console.log(blobinfo.blob())
+    
+    const formData = new FormData()
+    formData.append('image', blobinfo.blob())
+    http({
+      url: '/image/upload',
+      method: 'post',
+      data: formData
+    }).then((resp) => {
+      success(resp.data)
+    }).catch((err) => {
+      console.log(err)
+    })
+
   }
   // skin: 'oxide-dark', // 配置暗黑皮肤
 }

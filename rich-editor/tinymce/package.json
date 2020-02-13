@@ -4,6 +4,7 @@
   "description": "tinymce例程",
   "private": true,
   "dependencies": {
+    "axios": "^0.19.2",
     "tinymce": "^5.1.6"
   },
   "devDependencies": {

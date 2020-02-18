@@ -18,6 +18,7 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+// 配置upload目录为静态资源目录
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/upload', express.static(path.join(__dirname, 'upload')))
 app.use(cors());

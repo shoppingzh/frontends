@@ -1,0 +1,18 @@
+{
+  "name": "videojs-live",
+  "version": "1.0.0",
+  "description": "videojs rtmp拉流案例",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "live"
+  ],
+  "author": "xpzheng",
+  "license": "ISC",
+  "dependencies": {
+    "video.js": "^7.6.6",
+    "videojs-flash": "^2.2.1"
+  }
+}

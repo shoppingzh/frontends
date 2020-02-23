@@ -1,0 +1,20 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>jsonp</title>
+</head>
+<body>
+
+  <script>
+    function jsonpCallback(data) {
+      alert(data)
+    }
+
+    var node = document.createElement('script');
+    node.src = 'http://localhost:3000/jsonp/data?callback=jsonpCallback';
+    document.body.appendChild(node);
+  </script>
+  
+</body>
+</html>

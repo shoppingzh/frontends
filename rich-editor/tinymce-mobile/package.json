@@ -1,0 +1,11 @@
+{
+  "name": "tinymce-mobile",
+  "version": "1.0.0",
+  "description": "tinymce手机端例程",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "xpzheng",
+  "license": "ISC"
+}

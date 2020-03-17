@@ -54,3 +54,9 @@
 .spinner .orbit:nth-child(3){ border-top: 3px solid rgb(255, 29, 94); animation: orbit3-ani 1s infinite linear; -webkit-animation: orbit3-ani 1s infinite linear; }
 
 .bui-spinner .text{ padding: 0 .2rem; color: #666; }
+
+/* bui-imageview */
+.bui-imageview{ display: flex; flex-direction: column; }
+.bui-imageview-main{ flex: 1; }
+.bui-imageview-inner { display: flex; }
+.bui-imageview .image{ max-width: 100%; object-fit: contain; }

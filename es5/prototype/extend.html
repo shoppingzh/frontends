@@ -1,0 +1,46 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <p>请打开控制台查看</p>
+
+  <script>
+    function Animal(weight) {
+      this.weight = weight;
+    }
+
+    Animal.prototype.breath = function() {
+      console.log('体重为' + this.weight + '的动物呼吸')
+    }
+
+    function Dog(type) {
+      this.weight = 20;
+      this.type = type;
+    }
+
+    // 为什么不直接Dog.prototype = Animal.prototype呢？
+    // 因为原型类似对象模板的概念，如果把Dog的模板与Animal的模板合二为一，则二者就是一个模板，从而造出来的就是同一个对象了
+    // 而下面的语句指的是Dog的模板是一个Animal对象，这样非常合理，因为我们可以认为制造Dog的模板是一个动物，而不可以认为制造Dog的模板是制造动物的模板，这是不一样的
+    // 或者这样认为：我们以一个动物为标准指定出了制造Dog的模板
+    Dog.prototype = new Animal();
+
+    Dog.prototype.bark = function() {
+      console.log(this.type + '吠');
+    }
+
+    var dog = new Dog('哈士奇')
+    dog.breath();
+    dog.bark();
+
+    console.log('========================')
+    console.log(Animal.prototype)
+    console.log(Dog.prototype)
+
+  </script>
+  
+</body>
+</html>

@@ -1,0 +1,42 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <p>请打开控制台查看</p>
+
+  <script>
+    
+    function Animal(weight) {
+      this.weight = weight;
+    }
+
+    Animal.prototype.breath = function() {
+      console.log('体重为' + this.weight + '的动物呼吸')
+    }
+
+    var animal = new Animal(100);
+    animal.breath()
+
+    console.log('=======================')
+    console.log('Animal构造函数的原型对象为：')
+    console.log(Animal.prototype)
+
+    console.log('=======================')
+    console.log('animal.__proto__: ')
+    console.log(animal.__proto__)
+
+    console.log('=======================')
+    console.log('Animal.prototype.constructor === Animal: ')
+    console.log(Animal.prototype.constructor === Animal)
+
+    console.log('=======================')
+    console.log('animal.__proto__.constructor === Animal: ')
+    console.log(animal.__proto__.constructor === Animal)
+  </script>
+  
+</body>
+</html>

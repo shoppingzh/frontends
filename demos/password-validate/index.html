@@ -1,0 +1,117 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .validate{ color: #333; }
+    .validate.error{ color: #f9342a; }
+    .validate.success{ color: #52c41a; }
+
+  </style>
+</head>
+<body>
+
+  <h3>请输入密码：</h3>
+  <input id="password" type="text">
+
+  <div>
+    <h5>检查该密码是否匹配以下模式(最低忍耐次数：4, 包含大小写)：</h5>
+    <p class="validate">1. 不是键盘的连续字符"qwertyuiop[]"</p>
+    <p class="validate">2. 不是键盘的连续字符"asdfghjkl;'\"</p>
+    <p class="validate">3. 不是键盘的连续字符"zxcvbnm,./"</p>
+    <p class="validate">4. 不是连续字母"abcdefghijklmnopqrstuvwxyz"</p>
+    <p class="validate">5. 不是连续数字"0123456789"</p>
+  </div>
+
+  <script src="validator.js"></script>
+
+  <script>
+
+    var password = `
+      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
+    `
+    
+    var validates = document.querySelectorAll('.validate');
+    document.querySelector('#password').addEventListener('input', function() {
+      var password = this.value;
+      if (!password.trim()) {
+        validates.forEach(function(el) {
+          removeClass(el, 'error');
+          removeClass(el, 'success');
+        })
+      }
+
+      var v1 = isSerial(password, 'qwertyuiop[]', 4, true);
+      var v2 = isSerial(password, 'asdfghjkl;\\', 4, true);
+      var v3 = isSerial(password, 'zxcvbnm,./', 4, true);
+      var v4 = isSerial(password, 'abcdefghijklmnopqrstuvwxyz', 4, true);
+      var v5 = isSerial(password, '0123456789', 4, true);
+      var arr = [v1, v2, v3, v4, v5];
+      arr.forEach(function(v, index) {
+        var el = validates[index];
+        if (v) {
+          addClass(el, 'error');
+          removeClass(el, 'success');
+        } else {
+          addClass(el, 'success');
+          removeClass(el, 'error');
+        }
+      })
+    })
+
+    // 辅助函数
+
+    function addClass(el, className) {
+      var classNames = getClassNameList(el);
+
+      if (classNames.indexOf(className) < 0) {
+        classNames.push(className);
+      }
+
+      el.className = classNames.join(' ');
+    }
+
+    function removeClass(el, className) {
+      var classNames = getClassNameList(el);
+      var idx = -1;
+      if ((idx = classNames.indexOf(className)) >= 0) {
+        delete classNames[idx]
+      }
+      el.className = classNames.join(' ')
+    }
+
+    function getClassNameList(el) {
+      var classNames = [];
+      el.className.split(' ').forEach(function(name) {
+        if (name.trim()) {
+          classNames.push(name);
+        }
+      })
+      return classNames;
+    }
+    
+
+  </script>
+  
+</body>
+</html>

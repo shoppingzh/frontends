@@ -61,11 +61,11 @@
         })
       }
 
-      var v1 = isSerial(password, 'qwertyuiop[]', 4, true);
-      var v2 = isSerial(password, 'asdfghjkl;\\', 4, true);
-      var v3 = isSerial(password, 'zxcvbnm,./', 4, true);
-      var v4 = isSerial(password, 'abcdefghijklmnopqrstuvwxyz', 4, true);
-      var v5 = isSerial(password, '0123456789', 4, true);
+      var v1 = isSerial(password, 'qwertyuiop[]', 4, true, true);
+      var v2 = isSerial(password, 'asdfghjkl;\\', 4, true, true);
+      var v3 = isSerial(password, 'zxcvbnm,./', 4, true, true);
+      var v4 = isSerial(password, 'abcdefghijklmnopqrstuvwxyz', 4, true, true);
+      var v5 = isSerial(password, '0123456789', 4, true, true);
       var arr = [v1, v2, v3, v4, v5];
       arr.forEach(function(v, index) {
         var el = validates[index];

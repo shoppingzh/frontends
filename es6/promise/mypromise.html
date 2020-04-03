@@ -1,0 +1,48 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script src="mypromise.js"></script>
+    <script>
+
+        var myPromise = new MyPromise(function(resolve, reject) {
+            setTimeout(function() {
+                var random = Math.random();
+                if (random > 0) {
+                    console.log('已完成')
+                    return resolve(random)
+                } else {
+                    console.log('已拒绝')
+                    return reject('值太小了')
+                }
+            }, 300)
+        });
+
+        myPromise.then(function(result) {
+            console.log('随机值：' + result)
+        }, function(err) {
+            console.error(err)
+        })
+        
+        myPromise.then(function(result) {
+            console.log('随机值2：' + result)
+        }, function(err) {
+            console.error('错误2：' + err)
+        })
+
+        setTimeout(() => {
+            myPromise.then(function(result) {
+                console.log('1秒后结果：' + result);
+            })
+        }, 1000);
+
+        console.log(myPromise)
+    </script>
+
+</body>
+</html>

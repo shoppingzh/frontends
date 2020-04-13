@@ -1,0 +1,30 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <ol>
+        <li>函数的arguments对象并不是继承自Array，而是直接继承自Object</li>
+        <li>如果要遍历arguments对象，可使用arguments[i]的方式，也可以将arguments转换为一个数组</li>
+        <li>将argumetns转换为数组的方法：<code>Array.prototype.slice.call(arguments)</code> </li>
+    </ol>
+
+    <script>
+        function add() {
+            console.log('arguments.__proto__ === Object.prototype: ' + (arguments.__proto__ === Object.prototype))
+            var sum = 0;
+            for(var i = 0; i < arguments.length; i++) {
+                sum += arguments[i];
+            }
+            return sum;
+        }
+
+        console.log(add(1, 2, 3))
+        console.log(add(10, 99))
+    </script>
+    
+</body>
+</html>

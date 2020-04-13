@@ -1,0 +1,42 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{ margin: 0; }
+    </style>
+</head>
+<body>
+
+    <canvas id="canvas"></canvas>
+    
+    <script src="pdfjs/build/pdf.js"></script>
+    <script src="pdfjs/build/pdf.worker.js"></script>
+
+    <script>
+        console.log(pdfjsLib)
+        var canvas = document.querySelector('#canvas')
+
+
+        var loadingTask = pdfjsLib.getDocument('1.pdf')
+        var pageWidth = window.document.body.clientWidth
+        console.log(pageWidth)
+        loadingTask.promise.then((pdf) => {
+            pdf.getPage(1).then((page) => {
+                console.log(page)
+                var viewport = page.getViewport({ scale: 1 })
+                viewport = page.getViewport({ scale: pageWidth / viewport.width })
+                canvas.width = viewport.width
+                canvas.height = viewport.height
+                page.render({
+                    canvasContext: canvas.getContext('2d'),
+                    viewport: viewport
+                })
+            })
+
+        })
+    </script>
+
+</body>
+</html>

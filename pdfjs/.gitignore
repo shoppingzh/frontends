@@ -1,0 +1,4 @@
+pdfjs
+dist
+.vscode
+*.pdf

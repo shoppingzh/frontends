@@ -1,0 +1,67 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>窗口相关知识</title>
+</head>
+<body>
+
+  <button type="button" onclick="getWindowSize()">获取窗口尺寸(内部)</button>
+
+  <button type="button" onclick="getWindowSize2()">获取窗口尺寸(外部)</button>
+
+  <br><br>
+
+  <button type="button" onclick="openNewWindow()">打开新窗口</button>
+
+  <button type="button" onclick="openNewWindowIframe()">打开新窗口(iframe)</button>
+
+  <br><br>
+
+  <div>
+    <iframe name="inner"></iframe>
+  </div>
+
+  <br><br>
+
+  <button type="button" onclick="getPageSize()">通过document对象获取页面尺寸</button>
+
+  <h4>总结</h4>
+  <ol>
+    <li>内部窗口尺寸 = 页面的尺寸</li>
+    <li>外部窗口尺寸 = 浏览器的整个窗口范围</li>
+    <li>window.open()返回值是新窗口的window对象，可以在本页面操控新窗口</li>
+    <li>Chrome与Firefox对于document.documentElement.clientHeight的计算不一样，Chrome的html默认最低高度为窗口的高度，而Firefox的最低高度为内容物所撑开的高度</li>
+  </ol>
+
+  <script>
+    function getWindowSize() {
+      alert(`宽度: ${window.innerWidth}px, 高度: ${window.innerHeight}px`)
+    }
+
+    function getWindowSize2() {
+      alert(`宽度: ${window.outerWidth}px, 高度: ${window.outerHeight}px`)
+    }
+
+    function openNewWindow() {
+      var outer = window.open('_newwin.html')
+      // 拿到窗口引用，待窗口加载完成后，执行其方法
+      outer.addEventListener('load', function() {
+        outer.hello()
+      }, false)
+    }
+
+    function openNewWindowIframe() {
+      var inner = window.open('_newwin.html', 'inner')
+      console.log(inner)
+    }
+
+    function getPageSize() {
+      var docEl = window.document.documentElement
+      alert(`宽度: ${docEl.clientWidth}px, 高度: ${docEl.clientHeight}px`)
+    }
+
+  </script>
+  
+</body>
+</html>

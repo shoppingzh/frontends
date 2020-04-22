@@ -53,7 +53,17 @@
 
     function openNewWindowIframe() {
       var inner = window.open('_newwin.html', 'inner')
-      console.log(inner)
+	  var docEl = inner.document
+	  if (docEl.readyState == 'loading') {
+		docEl.addEventListener('DOMContentLoaded', onLoad, false)
+	  } else {
+		onLoad();
+	  }
+	  
+	  function onLoad() {
+		alert('加载完成')
+	  }
+	  
     }
 
     function getPageSize() {

@@ -1,0 +1,47 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>媒体对象加载状态探测</title>
+</head>
+<body>
+
+    <!-- <video id="video1" style="width: 600px;" loop 
+            preload src="https://vjs.zencdn.net/v/oceans.mp4" controls></video> -->
+    
+    <script src="tool.js"></script>
+    <script>
+        var v1 = document.createElement('video')
+        v1.src = 'https://vjs.zencdn.net/v/oceans.mp4';
+        v1.controls = true;
+        v1.loop = true;
+        document.body.appendChild(v1);
+
+        detect();
+        // 错误尺寸
+        console.log('视频尺寸(错误尺寸): ('+ v1.clientWidth + ',' + v1.clientHeight +')')
+        
+
+        setTimeout(function() {
+            detect();
+        }, 3000)
+
+        function detect() {
+            // 有意打乱顺序
+            waitMediaLoaded(v1, function() {
+                console.log('可播放到底')
+            }, 4)
+            waitMediaLoaded(v1, function() {
+                console.log('可播放数帧')
+            }, 3)
+            waitMediaLoaded(v1, function() {
+                console.log('元信息加载完成, 视频尺寸: ('+ this.clientWidth + ',' + this.clientHeight +')')
+            })
+            waitMediaLoaded(v1, function() {
+                console.log('第一帧可播放')
+            }, 2)
+        }
+    </script>
+    
+</body>
+</html>

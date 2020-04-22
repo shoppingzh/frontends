@@ -1,0 +1,115 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>媒体对象加载过程分析</title>
+    <style>
+        img{
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <div style="display: flex; flex-direction: row; align-items: flex-start; flex-shrink: 1;">
+        <video id="video1" style="width: 600px;" loop 
+            preload src="https://vjs.zencdn.net/v/oceans.mp4" controls></video>
+        <div>
+            <img src="media-load-process.png">
+        </div>
+    </div>
+    
+
+
+    <script>
+        var v1 = document.querySelector('#video1')
+
+        // 开始加载
+        v1.addEventListener('loadstart', function() {
+            console.log('loadstart')
+        })
+
+        // 总长度加载完成
+        v1.addEventListener('durationchange', function() {
+            console.log('durationchange')
+        })
+
+        // 成功加载所有元信息（包含媒体总长度，媒体的宽高尺寸等）
+        v1.addEventListener('loadedmetadata', function() {
+            console.log('loadedmetadata')
+        })
+
+        // 第一帧已可播放
+        v1.addEventListener('loadeddata', function() {
+            console.log('loadeddata')
+        })
+
+        // 可播放至少两帧(可能被多次触发)
+        v1.addEventListener('canplay', function() {
+            console.log('canplay')
+        }, false)
+
+        // 网络状况良好，可播放到底
+        v1.addEventListener('canplaythrough', function() {
+            console.log('canplaythrough')
+        }, false)
+       
+        // 加载发生错误
+        v1.addEventListener('error', function() {
+            console.log('error')
+        }, false)
+
+        // 媒体下载进度更新(可能被多次触发)
+        v1.addEventListener('progress', function() {
+            console.log('progress')
+        })
+        
+        // 恢复播放（只在暂停后恢复播放会触发，不包括初次播放、重新开始）
+        v1.addEventListener('play', function() {
+            console.log('play')
+        })
+
+        // 开始播放（包含第一次播放、反复播放、暂停后播放）
+        v1.addEventListener('playing', function() {
+            console.log('playing')
+        })
+
+        // 播放暂停
+        v1.addEventListener('pause', function() {
+            console.log('pause')
+        })
+
+        // 播放时间更新(多次触发)
+        v1.addEventListener('timeupdate', function() {
+            console.log('timeupdate')
+        })
+
+        // 获取新的媒体数据
+        v1.addEventListener('stalled', function() {
+            console.log('stalled')
+        })
+
+        // 音量改变
+        v1.addEventListener('volumechange', function() {
+            console.log('volumechange')
+        })
+        
+        // 开始跳转
+        v1.addEventListener('seeking', function() {
+            console.log('seeking')
+        })
+
+        // 跳转完成
+        v1.addEventListener('seeked', function() {
+            console.log('seeked')
+        })
+
+        // 播放结束
+        v1.addEventListener('ended', function() {
+            console.log('ended')
+        })
+
+    </script>
+
+</body>
+</html>

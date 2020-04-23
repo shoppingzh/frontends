@@ -1,0 +1,33 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图片加载完成探测</title>
+</head>
+<body>
+
+    <img src="https://github.com/shoppingzh/ui/raw/master/images/apple-watch-dial-8.gif">
+
+    <script src="tool.js"></script>
+    <script>
+        var image = document.querySelector('img')
+
+        detect();
+        setTimeout(function() {
+            detect();
+        }, 3000)
+        
+
+        function detect() {
+            waitImageLoaded2(image, function() {
+                console.log('加载完成')
+                console.log(this)
+            }, function() {
+                console.error('加载失败')
+                console.log(this)
+            })
+        }
+    </script>
+
+</body>
+</html>

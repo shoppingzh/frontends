@@ -1,0 +1,62 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>防抖</title>
+</head>
+<body>
+
+    <h5>案例一</h5>
+    <input type="text" placeholder="输入搜索关键字"> <button type="button" id="clear">清空</button>
+    <div id="result"></div>
+
+    <h5>案例二</h5>
+    <button id="inc" type="button">防抖按钮(300ms)</button>
+    <div id="result2"></div>
+
+    <script src="debounce.js"></script>
+
+    <script>
+
+        HTMLDivElement.prototype.times = 0;
+        HTMLDivElement.prototype.renderTimes = function(times) {
+            if (typeof times === 'undefined') {
+                times = this.times + 1;
+            }
+            this.times = times;
+            this.innerHTML = '已触发' + this.times + '次'
+        }
+
+        var el = document.querySelector('input')
+        var result = document.querySelector('#result')
+        var vd = new Debounce({
+            factor: 800
+        });
+        el.addEventListener('input', function(e) {
+            vd.touch(function() {
+                result.renderTimes();
+            })
+        }, false)
+
+        document.querySelector('#clear').addEventListener('click', function() {
+            el.value = '';
+            result.renderTimes(0);
+        }, false)
+
+        // ===============================
+
+        var btn = document.querySelector('#inc')
+        var result2 = document.querySelector('#result2')
+        var vd2 = new Debounce({
+            factor: 300
+        })
+        btn.addEventListener('click', function(e) {
+            vd2.touch(function() {
+                result2.renderTimes()
+            })
+        }, false)
+        
+    </script>
+    
+</body>
+</html>

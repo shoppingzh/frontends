@@ -1,0 +1,83 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>防抖与节流的可视化表现</title>
+    <link rel="stylesheet" href="app.css">
+</head>
+<body>
+
+    <div class="app">
+        <div class="app__main">
+            <div id="regularViewBox" class="view-box view-box--blue" data-title="普通">
+            </div>
+            <div id="debounceViewBox" class="view-box view-box--pink" data-title="防抖">
+            </div>
+            <div id="throttleViewBox" class="view-box  view-box--green" data-title="节流">
+            </div>
+        </div>
+        <div class="app__slide">
+            <div class="move-box" data-tips="请将鼠标在此处随意移动"></div>
+        </div>
+    </div>
+
+    <script src="debounce.js"></script>
+    <script src="throttle.js"></script>
+    <script>
+        var moveBox= document.querySelector('.move-box')
+        var regularViewBox = document.querySelector('#regularViewBox')
+        var debounceViewBox = document.querySelector('#debounceViewBox')
+        var throttleViewBox = document.querySelector('#throttleViewBox')
+        var size = 12;
+
+        var debounce = new Debounce({
+            factor: 300
+        });
+        var throttle = new Throttle({
+            factor: 300
+        });
+        moveBox.addEventListener('mousemove', function(e) {
+            renderLine(regularViewBox);
+            debounce.touch(function() {
+                renderLine(debounceViewBox)
+            })
+            throttle.touch(function() {
+                renderLine(throttleViewBox)
+            })
+        }, false)
+
+        // 重新计算可绘制宽度
+        var viewWidth = regularViewBox.clientWidth;
+        window.onresize = function() {
+            viewWidth = regularViewBox.clientWidth;
+        }
+
+        // 当前时间点预览线应该绘制在的x坐标
+        var x = 0;
+        (function tick() {
+            setTimeout(function() {
+                x += size + 3;
+                if (x >= viewWidth) {
+                    x = 0;
+                }
+                tick();
+            }, 30)
+        })();
+
+        function renderLine(el) {
+            var lastChild = el.lastChild
+            if (x < lastChild.offsetLeft) {
+                el.innerHTML = ''
+            }
+            var line = document.createElement('div')
+            line.classList.add('view-box__line')
+            line.style.width = size + 'px'
+            line.style.height = size + 'px'
+            line.style.left = x + 'px'
+            el.appendChild(line)
+        }
+
+    </script>
+    
+</body>
+</html>

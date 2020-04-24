@@ -2,6 +2,16 @@
 > 前端技术、框架例程、实现与文档集合。记录了前端的学习历程，帮助构筑前端技术栈。
 
 
+## 好玩的东西
+
+#### 1. 防抖、节流可视化
+![debounce and throttle](images/debounce-throttle.gif)
+
+#### 2. 像素提取
+![pixel viewer](images/pixel-viewer.gif)
+
+#### 3. 洗牌效果
+![shuffle](images/shuffle.gif)
 
 
 目录结构描述：
@@ -20,3 +30,4 @@
 - **`vue`** vue学习集合
 - `vue-router` vue router学习集合
 - `webpack` webpack学习集合
+

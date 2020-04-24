@@ -1,0 +1,67 @@
+/* 布局 */
+.app{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.app__main{
+    flex: 8;
+    margin: 0 20px;
+    background-color: #f3f4f7;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 0 2px 0 rgba(200, 200, 200, .55),
+                1px 1px 2px 0 rgba(160, 160, 160, .55);
+}
+.app__slide{
+    flex: 4;
+}
+
+/* 触摸盒 */
+.move-box{
+    padding-top: 100%;
+    border: 1px solid rgba(154, 169, 214, 1);
+    border-radius: 15px;
+    position: relative;
+}
+.move-box:after{
+    content: attr(data-tips);
+    color: #999;
+    text-align: center;
+    font-size: 12px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* 可视化 */
+.view-box{
+    position: relative;
+    height: 100px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+}
+.view-box:after{
+    content: attr(data-title);
+    color: #444;
+    font-size: 12px;
+    text-align: center;
+    position: absolute;
+    right: 0;
+    top: 30px;
+}
+.view-box--blue .view-box__line{
+    background-color: rgba(154, 169, 214, .9);
+}
+.view-box--pink .view-box__line{
+    background-color: rgba(255, 177, 193, .9);
+}
+.view-box--green .view-box__line{
+    background-color: rgba(75, 192, 192, .9);
+}
+.view-box__line{
+    border-radius: 50%;
+    position: absolute;
+}

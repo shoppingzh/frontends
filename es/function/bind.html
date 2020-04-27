@@ -1,0 +1,42 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Function的bind方法</title>
+</head>
+<body>
+
+    <script>
+
+        function sayHello() {
+            console.log('Hello, ' + this.name)
+        }
+
+        var person = {
+            name: 'Jack'
+        }
+
+        sayHello(); // Hello, 
+        var bindSayHello = sayHello.bind(person);
+        bindSayHello(); // Hello, Jack
+
+        console.log(sayHello.prototype) // Object
+        console.log(bindSayHello.prototype) // undefined
+
+        // bind常用案例：为setTimeout的回调绑定执行上下文
+        function Person(name) {
+            this.name = name;
+        }
+
+        Person.prototype.wait = function(time, callback) {
+            setTimeout(callback.bind(this), time)
+        }
+
+        var person = new Person('Jack')
+        person.wait(1000, function() {
+            console.log(this.name + '思索了1秒')
+        })
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,26 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iframe</title>
+</head>
+<body>
+
+    <p>请查看控制台输出</p>
+    
+    <script>
+        function isArray(obj) {
+            return obj instanceof Array;
+        }
+
+        function isArray2(obj) {
+            return Object.prototype.toString.call(obj).toLowerCase() === '[object array]';
+        }
+
+        function isArray3(obj) {
+            return Array.isArray(obj);
+        }
+    </script>
+
+</body>
+</html>

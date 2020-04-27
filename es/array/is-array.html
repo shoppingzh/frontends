@@ -1,0 +1,47 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>判断对象是否为数组</title>
+</head>
+<body>
+
+    <iframe src="is-array-iframe.html"></iframe>
+
+    <script>
+        var arr = new Array(5);
+        console.log('父框架中调用(instanceof)：' + isArray(arr)) // true
+        console.log('父框架中调用(Object.prototype.toString)：' + isArray2(arr)) // true
+        console.log('父框架中调用(Array.isArray)：' + isArray3(arr)) // true
+
+        window.frames[0].onload = function() {
+            console.log('======= 子框架加载完成 ======= ')
+            console.log('子框架中调用(instanceof)：' + this.isArray(arr)) // false
+            console.log('子框架中调用(Object.prototype.toString)：' + this.isArray2(arr)) // false
+            console.log('子框架中调用(Array.isArray)：' + this.isArray3(arr)) // false
+        }
+
+        function isArray(obj) {
+            return obj instanceof Array;
+        }
+
+        function isArray2(obj) {
+            return Object.prototype.toString.call(obj).toLowerCase() === '[object array]';
+        }
+
+        function isArray3(obj) {
+            return Array.isArray(obj);
+        }
+
+        // 兼容性写法
+        function isArrayAnyway(obj) {
+            if (Array.isArray) {
+                return Array.isArray(obj);
+            }
+            return Object.prototype.toString.call(obj).toLowerCase() === '[object array]';
+        }
+
+    </script>
+    
+</body>
+</html>

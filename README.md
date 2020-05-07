@@ -24,7 +24,10 @@
 
 
 ## 文档集合
-- [js变量提升](docs/es/var-hoist.md)
+- [变量提升](docs/es/变量提升.md)
+- [es6基础](docs/es/es6基础.md)
+- [模块化](docs/es/模块化.md)
+- [箭头函数](docs/es/箭头函数.md)
 
 
 

@@ -3,6 +3,7 @@
 
 
 ## 目录结构：
+- `admins` 针对后台管理系统提出的一些解决方案
 - `bom` 浏览器对象模型知识学习
 - `bui` bui的学习经历，关于本人对bui的扩展UI可见仓库：[bui-ui](https://github.com/shoppingzh/ui/tree/master/bui-ui)
 - `cors` 跨域学习与解决方案(jsonp/cors/反向代理等)

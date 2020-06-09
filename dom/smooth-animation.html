@@ -1,0 +1,59 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>平滑滚动</title>
+  <style>
+    .bar {
+      margin-top: 300px;
+      width: 500px;
+      border-top: 2px solid #ff85c0;
+      position: relative;
+    }
+    .ball{
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background-color: #ffa940;
+      position: absolute;
+      bottom: 2px;
+    }
+
+    button {
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="bar">
+    <div class="ball"></div>
+  </div>
+
+  <script>
+    var bar = document.querySelector('.bar');
+    var ball = document.querySelector('.ball');
+    var cw = bar.clientWidth, ch = bar.clientHeight;
+    var w = ball.clientWidth;
+
+    animate();
+    
+    function animate() {
+      var x = 0, dir = true;
+      doAnimate();
+
+      function doAnimate() {
+        x = dir ? x + 1 : x - 1;
+
+        ball.style.left = x + 'px';
+        if (x >= (cw - w) || x <= 0) {
+          dir = !dir;
+        }
+        window.requestAnimationFrame(doAnimate);
+      }
+    }
+
+  </script>
+  
+</body>
+</html>

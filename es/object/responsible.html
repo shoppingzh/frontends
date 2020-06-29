@@ -1,0 +1,26 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <div id="app">
+  </div>
+
+  <script>
+    var app = document.querySelector('#app')
+    
+    var data = {}
+    Object.defineProperty(data, 'content', {
+      set: function(newVal) {
+        app.innerHTML = newVal
+      }
+    })
+
+
+  </script>
+  
+</body>
+</html>

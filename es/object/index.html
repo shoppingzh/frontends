@@ -1,0 +1,63 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <ul>
+    <li>Object.assign只是浅拷贝，不支持深拷贝</li>
+    <li>Object.assign会拷贝</li>
+  </ul>
+
+  <script>
+    var t1 = {
+      a: 1,
+      b: 2
+    }
+    var s1 = {
+      a: 1,
+      b: 3,
+      c: 4
+    }
+    console.log(Object.assign(t1, s1))
+
+    var t2 = {
+      a: 1,
+      b: {
+        ba: 2,
+        bb: 3
+      }
+    }
+    var s2 = {
+      a: 1,
+      b: {
+        ba: 3,
+        bb: 4,
+        bc: 5
+      }
+    }
+    console.log(Object.assign(t2, s2))
+
+    var t3 = {
+      a: 1,
+      b: {
+        ba: {
+          baa: 2,
+          bab: 3,
+          bad: 7
+        },
+        bb: 4,
+        bc: 8
+      }
+    }
+    var s3 = {
+      a: 1,
+      b: 2
+    }
+    console.log(Object.assign(t3, s3))
+  </script>
+  
+</body>
+</html>

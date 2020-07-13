@@ -1,0 +1,17 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.19/lodash.min.js"></script>
+  <script>
+    window.addEventListener('resize', _.debounce(function(e) {
+      console.log(e)
+    }, 300), false)
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+root: true
+env:
+  browser: true
+  node: true
+  es6: true
+parserOptions:
+  sourceType: module
+extends: [eslint:recommended, plugin:vue/recommended]
+rules:
+  eqeqeq: [error, always]
+  no-empty: [off]
+  no-multi-spaces: [error]
+  max-len: [error, { code: 80, tabWidth: 2, comments: 140 }]
+  max-lines-per-function: [warn, { max: 22, skipBlankLines: true, skipComments: true, IIFEs: false }]
+  space-before-blocks: [error, always]
+  semi: [warn, never]
+  # vue rules
+  vue/html-self-closing: [warn]

@@ -1,0 +1,29 @@
+@import "../var/layout.scss";
+
+html, body, #app {
+  height: 100%;
+  margin: 0;
+}
+
+.layout {
+  height: 100%;
+  position: relative;
+
+  &__aside {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: $--layout-aside-width;
+    overflow-x: hidden;
+    background-color: $--layout-background-color;
+  }
+  &__main {
+    display: inline-block;
+    height: 160%;
+    position: relative;
+    width: calc(100% - #{$--layout-aside-width});
+    margin-left: $--layout-aside-width;
+    background-color: $--layout-main-background-color;
+  }
+}

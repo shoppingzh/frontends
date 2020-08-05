@@ -26,4 +26,27 @@ html, body, #app {
     margin-left: $--layout-aside-width;
     background-color: $--layout-main-background-color;
   }
+
+  &__navbar {
+    
+    height: 50px;
+    background-color: $--layout-navbar-background-color;
+    box-shadow: 0 1px 1px rgba(200, 200, 200, .75);
+  }
+  &__content {
+    margin-top: 50px;
+  }
+
+  &--fixed {
+   .layout{
+     &__navbar {
+       position: fixed;
+       left: $--layout-aside-width;
+       right: 0;
+       top: 0;
+     }
+   } 
+  }
+  
+
 }

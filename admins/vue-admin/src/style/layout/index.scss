@@ -17,6 +17,7 @@ html, body, #app {
     width: $--layout-aside-width;
     overflow-x: hidden;
     background-color: $--layout-background-color;
+    transition: width .3s;
     .layout--collapse & {
       width: $--layout-aside-collapse-width;
     }
@@ -28,7 +29,9 @@ html, body, #app {
     width: calc(100% - #{$--layout-aside-width});
     margin-left: $--layout-aside-width;
     background-color: $--layout-main-background-color;
+    transition: margin-left .3s, width .3s;
     .layout--collapse & {
+      width: calc(100% - #{$--layout-aside-collapse-width});
       margin-left: $--layout-aside-collapse-width;
     }
   }
@@ -38,12 +41,13 @@ html, body, #app {
     box-shadow: 0 1px 1px rgba(200, 200, 200, .75);
     height: $--layout-navbar-height;
     line-height: $--layout-navbar-height;
+    transition: left .3s;
 
     .layout--fixed & {
       position: fixed;
-       left: $--layout-aside-width;
-       right: 0;
-       top: 0;
+      left: $--layout-aside-width;
+      right: 0;
+      top: 0;
     }
 
     .layout--collapse & {

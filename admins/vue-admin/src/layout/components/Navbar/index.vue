@@ -3,7 +3,7 @@
     <el-link
       :underline="false"
       class="layout__navbar__toggle"
-      @click="handleCollapse" >
+      @click="handleCollapse">
       <i class="el-icon-s-fold" />
     </el-link>
   </nav>
@@ -13,7 +13,7 @@
 export default {
   methods: {
     handleCollapse() {
-      this.$store.dispatch('app/toggleCollapse')
+      this.$store.dispatch('toggleCollapse')
     }
   }
 }

@@ -17,6 +17,9 @@ html, body, #app {
     width: $--layout-aside-width;
     overflow-x: hidden;
     background-color: $--layout-background-color;
+    .layout--collapse & {
+      width: $--layout-aside-collapse-width;
+    }
   }
   &__main {
     display: inline-block;
@@ -25,28 +28,37 @@ html, body, #app {
     width: calc(100% - #{$--layout-aside-width});
     margin-left: $--layout-aside-width;
     background-color: $--layout-main-background-color;
+    .layout--collapse & {
+      margin-left: $--layout-aside-collapse-width;
+    }
   }
 
   &__navbar {
-    
-    height: 50px;
     background-color: $--layout-navbar-background-color;
     box-shadow: 0 1px 1px rgba(200, 200, 200, .75);
+    height: $--layout-navbar-height;
+    line-height: $--layout-navbar-height;
+
+    .layout--fixed & {
+      position: fixed;
+       left: $--layout-aside-width;
+       right: 0;
+       top: 0;
+    }
+
+    .layout--collapse & {
+      left: $--layout-aside-collapse-width;
+    }
+
+    // 左侧折叠菜单
+    &__toggle {
+      padding: 0 15px;
+      font-size: 20px;
+    }
   }
   &__content {
     margin-top: 50px;
   }
 
-  &--fixed {
-   .layout{
-     &__navbar {
-       position: fixed;
-       left: $--layout-aside-width;
-       right: 0;
-       top: 0;
-     }
-   } 
-  }
-  
 
 }

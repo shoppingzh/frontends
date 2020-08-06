@@ -16,3 +16,4 @@ rules:
   semi: [warn, never]
   # vue rules
   vue/html-self-closing: [warn]
+  vue/max-attributes-per-line: [warn, { singleline: 5 }]

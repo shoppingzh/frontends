@@ -1,23 +1,24 @@
+const COLLAPSE_KEY = 'app_collapse'
 
 const state = () => ({
-  collapse: false
+  collapse: localStorage.getItem(COLLAPSE_KEY) === 'true'
 })
 
 const mutations = {
   TOGGLE_COLLAPSE(state) {
     state.collapse = !state.collapse
+    localStorage.setItem(COLLAPSE_KEY, state.collapse)
   }
 }
 
 const actions = {
   toggleCollapse({ commit }) {
-    console.log(commit)
     commit('TOGGLE_COLLAPSE')
   }
 }
 
 export default {
-  namespace: true,
+  namespaced: true,
   state,
   mutations,
   actions

@@ -21,7 +21,7 @@ export default {
   },
   methods: {
     handleCollapse() {
-      this.$store.dispatch('toggleCollapse')
+      this.$store.dispatch('app/toggleCollapse')
     }
   }
 }

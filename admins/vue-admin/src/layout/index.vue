@@ -40,8 +40,17 @@ export default {
       return this.$store.state.app.collapse
     }
   },
-  created() {
-    console.log(this.collapse)
+  mounted() {
+    this.resizeHandler = this._.debounce(() => {
+      const needCollapse = document.body.clientWidth < 768
+      if (needCollapse && !this.collapse) {
+        this.$store.dispatch('app/toggleCollapse')
+      }
+    }, 150)
+    window.addEventListener('resize', this.resizeHandler , false)
+  },
+  beforeDestroy() {
+    window.removeEventListener(this.resizeHandler)
   }
 }
 </script>

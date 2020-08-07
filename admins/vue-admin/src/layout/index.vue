@@ -30,15 +30,16 @@
 <script>
 import Navbar from './components/Navbar'
 import MenuItem from './components/MenuItem'
+import { mapGetters } from 'vuex'
 export default {
   components: {
     Navbar,
     MenuItem
   },
   computed: {
-    collapse() {
-      return this.$store.state.app.collapse
-    }
+    ...mapGetters({
+      collapse: 'app/collapse'
+    })
   },
   mounted() {
     this.resizeHandler = this._.debounce(() => {

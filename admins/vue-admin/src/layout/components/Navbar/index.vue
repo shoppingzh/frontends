@@ -13,11 +13,12 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
   computed: {
-    collapse() {
-      return this.$store.state.app.collapse
-    }
+    ...mapGetters({
+      collapse: 'app/collapse'
+    })
   },
   methods: {
     handleCollapse() {

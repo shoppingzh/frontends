@@ -17,9 +17,16 @@ const actions = {
   }
 }
 
+const getters = {
+  collapse: state => {
+    return state.collapse
+  }
+}
+
 export default {
   namespaced: true,
   state,
   mutations,
-  actions
+  actions,
+  getters
 }

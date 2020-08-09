@@ -1,9 +1,10 @@
 <template>
   <section
     class="layout layout--fixed"
-    :class="[collapse ? 'layout--collapse' : '']">
+    :class="[collapse ? 'layout--collapse' : '']"
+    :data-theme="theme">
     <aside class="layout__aside">
-      <el-scrollbar>
+      <el-scrollbar style="height: 100%;">
         <el-menu default-active="0">
           <el-menu-item index="0">
             <menu-item />
@@ -24,21 +25,34 @@
       <navbar />
       <div class="layout__content">hello</div>
     </main>
+    <el-drawer
+      title="设置"
+      :visible.sync="setting">
+      <settings />
+    </el-drawer>
   </section>
 </template>
 
 <script>
 import Navbar from './components/Navbar'
 import MenuItem from './components/MenuItem'
+import Settings from './components/Settings'
 import { mapGetters } from 'vuex'
 export default {
   components: {
     Navbar,
-    MenuItem
+    MenuItem,
+    Settings
+  },
+  data() {
+    return {
+      setting: false
+    }
   },
   computed: {
     ...mapGetters({
-      collapse: 'app/collapse'
+      collapse: 'app/collapse',
+      theme: 'app/theme'
     })
   },
   mounted() {

@@ -6,7 +6,11 @@ Vue.use(VueRouter)
 
 const routes = [{
   path: '/',
-  component: Layout
+  component: Layout,
+  children: [{
+    path: '',
+    component: () => import('@/views/dashboard/index')
+  }]
 }]
 
 const router = new VueRouter({

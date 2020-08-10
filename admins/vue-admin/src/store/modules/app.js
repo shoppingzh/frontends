@@ -2,7 +2,8 @@ const COLLAPSE_KEY = 'app_collapse'
 
 const state = () => ({
   collapse: localStorage.getItem(COLLAPSE_KEY) === 'true',
-  theme: 'default'
+  theme: 'default',
+  layout: null
 })
 
 const mutations = {
@@ -12,6 +13,9 @@ const mutations = {
   },
   SET_THEME(state, theme) {
     state.theme = theme
+  },
+  SET_LAYOUT(state, layout) {
+    state.layout = layout
   }
 }
 
@@ -21,6 +25,9 @@ const actions = {
   },
   setTheme({ commit }, theme) {
     commit('SET_THEME', theme)
+  },
+  setLayout({ commit }, layout) {
+    commit('SET_LAYOUT', layout)
   }
 }
 
@@ -30,6 +37,9 @@ const getters = {
   },
   theme: state => {
     return state.theme
+  },
+  layout: state => {
+    return state.layout
   }
 }
 

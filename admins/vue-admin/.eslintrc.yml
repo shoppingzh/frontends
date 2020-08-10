@@ -4,6 +4,7 @@ env:
   node: true
   es6: true
 parserOptions:
+  parser: babel-eslint
   sourceType: module
 extends: [eslint:recommended, plugin:vue/recommended]
 rules:

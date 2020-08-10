@@ -1,71 +1,25 @@
 <template>
-  <section
-    class="layout layout--fixed"
-    :class="[collapse ? 'layout--collapse' : '']"
-    :data-theme="theme">
-    <aside class="layout__aside">
-      <el-scrollbar style="height: 100%;">
-        <el-menu default-active="0">
-          <el-menu-item index="0">
-            <menu-item />
-          </el-menu-item>
-          <el-menu-item index="1">
-            <menu-item />
-          </el-menu-item>
-          <el-menu-item index="2">
-            <menu-item />
-          </el-menu-item>
-          <el-menu-item index="3">
-            <menu-item />
-          </el-menu-item>
-        </el-menu>
-      </el-scrollbar>
-    </aside>
-    <main class="layout__main">
-      <navbar />
-      <div class="layout__content">hello</div>
-    </main>
-    <el-drawer
-      title="设置"
-      :visible.sync="setting">
-      <settings />
-    </el-drawer>
-  </section>
+  <div>
+    <component :is="currentLayout" />
+  </div>
 </template>
 
 <script>
-import Navbar from './components/Navbar'
-import MenuItem from './components/MenuItem'
-import Settings from './components/Settings'
-import { mapGetters } from 'vuex'
+import './layouts'
 export default {
-  components: {
-    Navbar,
-    MenuItem,
-    Settings
-  },
-  data() {
-    return {
-      setting: false
-    }
-  },
   computed: {
-    ...mapGetters({
-      collapse: 'app/collapse',
-      theme: 'app/theme'
-    })
-  },
-  mounted() {
-    this.resizeHandler = this._.debounce(() => {
-      const needCollapse = document.body.clientWidth < 768
-      if (needCollapse && !this.collapse) {
-        this.$store.dispatch('app/toggleCollapse')
+    currentLayout: {
+      get() {
+        return this.$store.state.app.layout || 'LayoutDefault'
+      },
+      set(newVal) {
+        this.$store.dispatch('app/setLayout', newVal)
       }
-    }, 150)
-    window.addEventListener('resize', this.resizeHandler , false)
-  },
-  beforeDestroy() {
-    window.removeEventListener(this.resizeHandler)
+    }
   }
 }
 </script>
+
+<style>
+
+</style>

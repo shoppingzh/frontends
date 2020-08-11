@@ -1,7 +1,5 @@
 <template>
-  <div>
-    <component :is="currentLayout" />
-  </div>
+  <component :is="currentLayout" />
 </template>
 
 <script>

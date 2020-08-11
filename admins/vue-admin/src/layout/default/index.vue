@@ -6,18 +6,10 @@
     <aside class="layout__aside">
       <el-scrollbar style="height: 100%;">
         <el-menu default-active="0">
-          <el-menu-item index="0">
-            <menu-item />
-          </el-menu-item>
-          <el-menu-item index="1">
-            <menu-item />
-          </el-menu-item>
-          <el-menu-item index="2">
-            <menu-item />
-          </el-menu-item>
-          <el-menu-item index="3">
-            <menu-item />
-          </el-menu-item>
+          <route-menu
+            v-for="route in menuRoutes"
+            :key="route.path"
+            :route="route" />
         </el-menu>
       </el-scrollbar>
     </aside>
@@ -34,17 +26,19 @@
 </template>
 
 <script>
-import Navbar from '../components/Navbar'
-import MenuItem from '../components/MenuItem'
+import Navbar from './components/Navbar'
+import RouteMenu from './components/RouteMenu'
 import Settings from '../components/Settings'
 import { mapGetters } from 'vuex'
+import menu from '../mixins/menu'
 export default {
   name: 'LayoutDefault',
   components: {
     Navbar,
-    MenuItem,
+    RouteMenu,
     Settings
   },
+  mixins: [menu],
   data() {
     return {
       setting: false

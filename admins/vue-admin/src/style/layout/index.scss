@@ -27,9 +27,15 @@ html, body, #app {
     .el-menu {
       border: none;
       @include theme((
-        background-color: sidebar-background-color,
-        font-weight: font-weight
-      ))
+        background-color: sidebar-background-color
+      ));
+      &-item {
+        color: rgba(255, 255, 255, 0.65);
+        &:hover, &:active, &.is-active {
+          background-color: transparent;
+          color: rgba(255, 255, 255, 1);
+        }
+      }
     }
   }
   &__main {

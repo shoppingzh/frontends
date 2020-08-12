@@ -1,7 +1,7 @@
 <template>
   <span>
     <i class="el-icon-location" />
-    <span v-if="!collapse">{{ title }}</span>
+    <span slot="title">{{ title }}</span>
   </span>
 </template>
 

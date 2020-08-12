@@ -5,7 +5,7 @@
     :data-theme="theme">
     <aside class="layout__aside">
       <el-scrollbar style="height: 100%;">
-        <el-menu default-active="0">
+        <el-menu :default-active="$route.path" unique-opened :collapse="collapse">
           <route-menu
             v-for="route in menuRoutes"
             :key="route.path"
@@ -14,11 +14,15 @@
       </el-scrollbar>
     </aside>
     <main class="layout__main">
-      <navbar />
-      <router-view />
+      <navbar
+        @setting="setting = !setting" />
+      <section class="layout__content">
+        <router-view />
+      </section>
     </main>
     <el-drawer
       title="设置"
+      size="500px"
       :visible.sync="setting">
       <settings />
     </el-drawer>

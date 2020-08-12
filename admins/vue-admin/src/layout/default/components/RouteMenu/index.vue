@@ -1,14 +1,15 @@
 <template>
-  <el-menu-item
-    v-if="leaf"
-    :index="route.path">
-    <router-link :to="routePath" tag="div">
-      <route-menu-item :route="route" />
-    </router-link>
-  </el-menu-item>
-  <el-submenu v-else :index="route.path">
+  <router-link v-if="leaf" :to="routePath" tag="div">
+    <el-menu-item
+      :index="routePath">
+      <i class="el-icon-document" />
+      <span slot="title">导航三</span>
+    </el-menu-item>
+  </router-link>
+  <el-submenu v-else :index="routePath">
     <template #title>
-      <route-menu-item :route="route" />
+      <i class="el-icon-document" />
+      <span slot="title">导航三</span>
     </template>
     <route-menu
       v-for="childRoute in route.children"
@@ -19,13 +20,9 @@
 </template>
 
 <script>
-import RouteMenuItem from './RouteMenuItem'
 const { join } = require('path')
 export default {
   name: 'RouteMenu',
-  components: {
-    RouteMenuItem
-  },
   props: {
     route: {
       type: Object,

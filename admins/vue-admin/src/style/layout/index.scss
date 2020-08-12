@@ -1,5 +1,4 @@
-@import "../var/layout.scss";
-@import "../theme.scss";
+@import "../var.scss";
 
 html, body, #app {
   height: 100%;
@@ -17,23 +16,19 @@ html, body, #app {
     bottom: 0;
     width: $--layout-aside-width;
     overflow-x: hidden;
+    background-color: $--layout-aside-background-color;
     transition: width .3s;
+    // border-right: 1px solid #eee;
+    box-shadow: 0 2px 1px 0 rgba(44, 51, 73, .1);
     .layout--collapse & {
       width: $--layout-aside-collapse-width;
     }
-    @include theme((
-      background-color: sidebar-background-color
-    ));
     .el-menu {
       border: none;
-      @include theme((
-        background-color: sidebar-background-color
-      ));
-      &-item {
-        color: rgba(255, 255, 255, 0.65);
-        &:hover, &:active, &.is-active {
-          background-color: transparent;
-          color: rgba(255, 255, 255, 1);
+      &-item, .el-submenu__title {
+        i {
+          font-size: 18px;
+          margin-right: 5px;
         }
       }
     }
@@ -44,24 +39,29 @@ html, body, #app {
     position: relative;
     width: calc(100% - #{$--layout-aside-width});
     margin-left: $--layout-aside-width;
+    background-color: $--layout-main-background-color;
     transition: margin-left .3s, width .3s;
     .layout--collapse & {
       width: calc(100% - #{$--layout-aside-collapse-width});
       margin-left: $--layout-aside-collapse-width;
     }
-    @include theme((
-      background-color: system-background-color
-    ));
   }
 
   &__navbar {
-    box-shadow: 0 1px 1px rgba(200, 200, 200, .75);
     height: $--layout-navbar-height;
     line-height: $--layout-navbar-height;
+    background-color: $--layout-navbar-background-color;
+    box-shadow: 0 1px 2px 0 rgba(44, 51, 73, .1);
     transition: left .3s;
-    @include theme((
-      background-color: system-background-color,
-    ));
+    &:after {
+      content: "";
+      display: table;
+      visibility: hidden;
+      position: absolute;
+      width: 0;
+      height: 0;
+      clear: both;
+    }
 
     .layout--fixed & {
       position: fixed;
@@ -74,19 +74,29 @@ html, body, #app {
       left: $--layout-aside-collapse-width;
     }
 
-    // 左侧折叠菜单
+    // 左侧折叠按钮
     &__toggle {
+      float: left;
       padding: 0 15px;
       font-size: 20px;
+    }
+    // 右侧菜单
+    &__menu {
+      float: right;
+      padding: 0 10px;
+      &-item {
+        padding: 0 15px;
+        cursor: pointer;
+        &:hover {
+          background-color: #eee;
+        }
+      }
     }
   }
   // 内容区域
   &__content {
     margin-top: 50px;
     min-height: 100%;
-    @include theme((
-      background-color: secondary-system-background-color
-    ));
   }
   // 设置
   &__setting {

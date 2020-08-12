@@ -3,12 +3,17 @@
     <el-link
       :underline="false"
       class="layout__navbar__toggle"
-      @click="handleCollapse">
+      @click="handleToggleCollapse">
       <i
         class="el-icon-s-fold"
         :style="{ transform: `rotate(${collapse ? '180' : '0'}deg)` }"
         style="transition: transform .3s;" />
     </el-link>
+    <div class="layout__navbar__menu">
+      <div class="layout__navbar__menu-item" @click="handleToggleSetting">
+        <i class="el-icon-s-tools" />
+      </div>
+    </div>
   </nav>
 </template>
 
@@ -21,8 +26,11 @@ export default {
     })
   },
   methods: {
-    handleCollapse() {
+    handleToggleCollapse() {
       this.$store.dispatch('app/toggleCollapse')
+    },
+    handleToggleSetting() {
+      this.$emit('setting')
     }
   }
 }

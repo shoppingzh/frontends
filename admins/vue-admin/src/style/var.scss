@@ -1,9 +1,15 @@
+$--primary-color: #1890ff;
+
 /*
 -------------- Layout */
 $--layout-aside-width: 256px;
 $--layout-aside-collapse-width: 64px;
-$--layout-aside-background-color: #fff;
+$--layout-aside-background-color: #001529;
+$--layout-aside-text-color: #b8c7ce;
+$--layout-aside-active-background-color: $--primary-color;
+$--layout-aside-active-text-color: #fff;
 $--layout-background-color: #fff;
 $--layout-main-background-color: #edf1f7;
 $--layout-navbar-background-color: #fff;
-$--layout-navbar-height: 50px;
+$--layout-navbar-height: 64px;
+$--layout-logo-height: 64px;

@@ -4,7 +4,13 @@
     :class="[collapse ? 'layout--collapse' : '']"
     :data-theme="theme">
     <aside class="layout__aside">
-      <el-scrollbar style="height: 100%;">
+      <div class="layout__logo">
+        <span class="layout__logo__icon">
+          <img src="favicon.ico">
+        </span>
+        <span v-show="!collapse" class="layout__logo__title">vue-admin</span>
+      </div>
+      <el-scrollbar class="layout__aside__menu">
         <el-menu :default-active="$route.path" unique-opened :collapse="collapse">
           <route-menu
             v-for="route in menuRoutes"
@@ -31,8 +37,8 @@
 
 <script>
 import Navbar from './components/Navbar'
-import RouteMenu from './components/RouteMenu'
 import Settings from '../components/Settings'
+import RouteMenu from './components/RouteMenu'
 import { mapGetters } from 'vuex'
 import menu from '../mixins/menu'
 export default {

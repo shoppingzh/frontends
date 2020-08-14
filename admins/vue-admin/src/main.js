@@ -5,6 +5,7 @@ import store from "./store"
 import '@/plugins/element-ui'
 import '@/plugins/lodash'
 import '@/style/index.scss'
+import './permission'
 
 Vue.config.productionTip = false
 

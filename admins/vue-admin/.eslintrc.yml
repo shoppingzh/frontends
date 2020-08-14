@@ -15,6 +15,7 @@ rules:
   max-lines-per-function: [warn, { max: 22, skipBlankLines: true, skipComments: true, IIFEs: false }]
   space-before-blocks: [error, always]
   semi: [warn, never]
+  # no-unused-vars: [warn]
   # vue rules
   vue/html-self-closing: [warn]
   vue/max-attributes-per-line: [warn, { singleline: 5 }]

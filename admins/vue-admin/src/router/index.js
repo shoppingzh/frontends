@@ -30,6 +30,9 @@ const routes = [{
       meta: { menu: true, title: '三级菜单1' }
     }]
   }]
+}, {
+  path: '/login',
+  component: () => import('@/views/login/index')
 }]
 
 const router = new VueRouter({

@@ -21,3 +21,4 @@ rules:
   vue/max-attributes-per-line: [warn, { singleline: 5 }]
   vue/html-closing-bracket-newline: [off]
   vue/singleline-html-element-content-newline: [off]
+  vue/multiline-html-element-content-newline: [off]

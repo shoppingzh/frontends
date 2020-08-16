@@ -1,4 +1,4 @@
-$--primary-color: #1890ff;
+@import "el-var.scss";
 
 /*
 -------------- Layout */
@@ -6,7 +6,7 @@ $--layout-aside-width: 256px;
 $--layout-aside-collapse-width: 64px;
 $--layout-aside-background-color: #001529;
 $--layout-aside-text-color: #b8c7ce;
-$--layout-aside-active-background-color: $--primary-color;
+$--layout-aside-active-background-color: $--color-primary;
 $--layout-aside-active-text-color: #fff;
 $--layout-background-color: #fff;
 $--layout-main-background-color: #edf1f7;

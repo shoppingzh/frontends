@@ -4,6 +4,7 @@ import router from "./router"
 import store from "./store"
 import '@/plugins/element-ui'
 import '@/plugins/lodash'
+import '@/plugins/xp'
 import '@/style/index.scss'
 import './permission'
 

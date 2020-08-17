@@ -1,0 +1,143 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      margin: 0;
+    }
+    body:after {
+      content: "";
+      position: fixed;
+      width: 100%;
+      left: 0;
+      top: 200px;
+      height: 1px;
+      background-color: forestgreen;
+    }
+    #a {
+      margin-top: 100px;
+      background-color: pink;
+      /* position: relative; */
+    }
+    #b {
+      width: 500px;
+      height: 300px;
+      background-color: tomato;
+    }
+    #c {
+      height: 160px;
+      width: 160px;
+      background-color: teal;
+    }
+
+    .page {
+      display: flex;
+    }
+    .left {
+      flex: 16;
+    }
+    .right {
+      flex: 12;
+      padding: 10px;
+    }
+    #result {
+      background-color: #f3f4f7;
+      padding: 10px;
+      color: #666;
+      font-size: 14px;
+    }
+    #actions button {
+      margin-bottom: 8px;
+    }
+    .box {
+      padding: 5px;
+      background-color: #eee;
+      color: #fff;
+      text-align: right;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="page">
+    <div class="left">
+      <div id="a" class="box">
+        A
+        <div id="b" class="box">
+          B
+          <div id="c" class="box">C</div>
+        </div>
+      </div>
+    </div>
+    <div class="right">
+      <div id="result">
+
+      </div>
+      <div style="margin-top: 20px;" id="actions">
+        <button id="action1">设置A元素为相对定位</button>
+        <button id="action2">设置A元素为普通定位</button>
+        <button id="action3">设置B元素为相对定位</button>
+        <button id="action4">设置B元素为普通定位</button>
+        <button id="action5">设置C元素为绝对定位</button>
+      </div>
+    </div>
+  </div>
+
+  
+
+  <script>
+    var a = document.querySelector('#a')
+    var b = document.querySelector('#b')
+    var c = document.querySelector('#c')
+    var result = document.querySelector('#result')
+
+    document.querySelector('#action1').addEventListener('click', function(e) {
+      a.style.position = 'relative'
+      showResult()
+    }, false)
+
+    document.querySelector('#action2').addEventListener('click', function(e) {
+      a.style.position = 'static'
+      showResult()
+    }, false)
+
+    document.querySelector('#action3').addEventListener('click', function(e) {
+      b.style.position = 'relative'
+      showResult()
+    }, false)
+
+    document.querySelector('#action4').addEventListener('click', function(e) {
+      b.style.position = 'static'
+      showResult()
+    }, false)
+
+    document.querySelector('#action5').addEventListener('click', function(e) {
+      c.style.position = 'absolute'
+      c.style.bottom = '0'
+      showResult()
+    }, false)
+
+    c.addEventListener('mousemove', function(e) {
+      if (e.ctrlKey) {
+        console.log(e)
+      }
+    }, false)
+
+    showResult()
+
+    function showResult() {
+      var html = `
+        <h3>各元素的偏移情况：</h3>
+        <p>A: offsetLeft = ${a.offsetLeft}, offsetTop = ${a.offsetTop}</p>
+        <p>B: offsetLeft = ${b.offsetLeft}, offsetTop = ${b.offsetTop}</p>
+        <p>C: offsetLeft = ${c.offsetLeft}, offsetTop = ${c.offsetTop}</p>
+      `
+      result.innerHTML = html
+    }
+
+  </script>
+  
+</body>
+</html>

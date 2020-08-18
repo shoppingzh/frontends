@@ -58,6 +58,15 @@
       this.ctx.lineTo(x, y)
       this.ctx.stroke()
     },
+    setColor: function(color) {
+      this.ctx.strokeStyle = color
+    },
+    setLineWidth: function(lineWidth) {
+      this.ctx.lineWidth = lineWidth
+    },
+    setLineCap: function(lineCap) {
+      this.ctx.lineCap = lineCap
+    },
     clear: function() {
       this.ctx.beginPath()
       this.ctx.clearRect(0, 0, this.bounds.width, this.bounds.height)

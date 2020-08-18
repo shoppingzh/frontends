@@ -9,13 +9,69 @@
       height: calc(50vh);
       border: 1px solid #ccc;
     }
+    .actions {
+      padding: 20px 0;
+    }
+    .color-item {
+      width: 50px;
+      height: 20px;
+      display: inline-block;
+      margin-right: 5px;
+      margin-bottom: 5px;
+      box-sizing: border-box;
+    }
+    [data-color="tomato"] {
+      background-color: tomato;
+    }
+    [data-color="pink"] {
+      background-color: pink;
+    }
+    .color-item--active {
+      border: 1px solid #000;
+    }
+
+    .box {
+      display: flex;
+    }
+    .left {
+      flex: 16;
+    }
+    .right {
+      flex: 8;
+    }
+
+    .line-item {
+    }
+    .line-item--thin {
+      border-top: 1px solid #000;
+    }
   </style>
 </head>
 <body>
 
   <canvas></canvas>
 
-  <button id="clearBtn" type="button">清除内容</button>
+  <div class="actions">
+    <button id="clearBtn" type="button">清除内容</button>
+  </div>
+
+  <div class="box">
+    <div class="left">
+      <div class="colors">
+        <div class="color-item" data-color="tomato"></div>
+        <div class="color-item" data-color="pink"></div>
+      </div>
+    </div>
+    <div class="right">
+      <div class="lines">
+        <div class="line-item line-item--thin"></div>
+        <div class="line-item line-item--medium"></div>
+        <div class="line-item line-item--thick"></div>
+      </div>
+    </div>
+  </div>
+
+  
 
   <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.20/lodash.min.js"></script>
   <script src="drawing-board.js"></script>
@@ -25,6 +81,13 @@
     document.querySelector('#clearBtn').addEventListener('click', function() {
       board.clear()
     }, false)
+
+    document.querySelectorAll('.color-item').forEach(function(item) {
+      item.addEventListener('click', function() {
+        this.classList.add('color-item--active')
+        board.setColor(this.dataset.color)
+      }, false)
+    })
 
   </script>
   

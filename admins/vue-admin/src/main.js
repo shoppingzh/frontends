@@ -7,6 +7,8 @@ import '@/plugins/lodash'
 import '@/plugins/xp'
 import '@/style/index.scss'
 import './permission'
+import '@/utils/common/theme'
+import '@/style/theme.scss'
 
 Vue.config.productionTip = false
 

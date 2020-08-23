@@ -16,9 +16,14 @@ export default {
   .page {
     background-color: #9df3f4;
     height: 100%;
-    background-image: url('/loginbg.png');
-    background-position: 50% 50%;
-    background-size: cover;
+    // background-image: url('/loginbg.png');
+    // background-position: 50% 50%;
+    // background-size: cover;
+    background: #43cea2;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to bottom, #185a9d, #43cea2);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom, #185a9d, #43cea2);
+
+
   }
   .login {
     position: relative;

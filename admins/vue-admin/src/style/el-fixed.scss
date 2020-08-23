@@ -3,3 +3,10 @@
     overflow-x: hidden;
   }
 }
+
+.el-drawer {
+  outline: none;
+  [role="heading"] {
+    outline: none;
+  }
+}

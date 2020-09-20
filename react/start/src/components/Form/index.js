@@ -14,17 +14,29 @@ export default class Form extends Component {
     }
   }
 
+  handleNameChange = (val) => {
+    const info = this.state.info
+    info.name = val
+    this.setState({ info })
+  }
+  
+  handleAgeChange = (val) => {
+    const info = this.state.info
+    info.age = val
+    this.setState({ info })
+  }
+
   render() {
     return (
       <div className="form">
         <div>
           <div>
             <label>请输入姓名：</label>
-            <MyInput value={this.state.info.name} onChange={val => this.setState({ info: { name: val } }) } />
+            <MyInput value={this.state.info.name} onChange={this.handleNameChange} />
           </div>
           <div>
             <label>请输入年龄：</label>
-            <MyInput value={this.state.info.age} onChange={val => this.setState({ info: { age: val } })} />
+            <MyInput value={this.state.info.age} onChange={this.handleAgeChange} />
           </div>
         </div>
       </div>

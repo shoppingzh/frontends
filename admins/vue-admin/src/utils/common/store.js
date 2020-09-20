@@ -1,7 +1,7 @@
 const NAMESPACE = 'xp_'
 
 function getKey(key) {
-  return NAMESPACE + key;
+  return NAMESPACE + key
 }
 
 export function setItem(key, value) {

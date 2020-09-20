@@ -23,6 +23,7 @@ html, body, #app {
     box-shadow: 2px 0 6px rgba(0, 21, 41, .35);
     .layout--collapse & {
       width: $--layout-aside-collapse-width;
+      transition: .3s;
     }
     &__menu {
       height: calc(100% - #{$--layout-logo-height});
@@ -31,7 +32,7 @@ html, body, #app {
       border: none;
       background-color: transparent;
       &--collapse {
-        width: $--layout-aside-collapse-width;
+        // width: $--layout-aside-collapse-width;
         .el-menu-item, .el-submenu__title {
           text-align: center;
         }

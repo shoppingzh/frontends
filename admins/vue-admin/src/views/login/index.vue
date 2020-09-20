@@ -28,7 +28,7 @@ export default {
   .login {
     position: relative;
     top: 25%;
-    width: 400px;
+    width: 350px;
     margin: 0 auto;
     padding: 20px;
     border-radius: 5px;

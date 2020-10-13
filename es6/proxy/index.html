@@ -1,0 +1,43 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <div id="app">
+    <div> {{ tips }} </div>
+    <div>{{ time }}</div>
+  </div>
+
+  <!-- <script>
+    
+    var o = new Proxy({
+      name: 'proxy'
+    }, {
+      get(target, property, receiver) {
+        console.log(`正在获取${property}的值`)
+        return target[property]
+      }
+    })
+    console.log(o.name)
+  </script> -->
+
+  <script src="myvue.js"></script>
+  <script>
+    const myVue = new MyVue({
+      el: document.querySelector('#app'),
+      data: {
+        tips: 'Hello, vue!',
+        time: null
+      }
+    })
+    setTimeout(() => {
+      myVue.tips = '你好，vue！'
+      myVue.time = new Date()
+    }, 1000)
+  </script>
+  
+</body>
+</html>

@@ -1,0 +1,28 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+    var a = Symbol('a')
+    var b = Symbol('b')
+
+    var o = {
+      [a]: 1,
+      [b]: 2
+    }
+    // 无法通过对象.的方式获取，因为默认为字符串
+    console.log(o[a])
+    console.log(o.a)
+    // 即便描述相同，两个Symbol是不同的对象
+    console.log(Symbol('x') === Symbol('x'))
+    
+    console.log(Symbol.for('a'))
+    console.log(Symbol.for('a') === a)
+  </script>
+
+</body>
+</html>

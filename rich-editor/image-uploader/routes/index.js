@@ -25,7 +25,8 @@ router.get('/', function(req, res, next) {
 router.post('/file/upload', upload.single('file'), function(req, res, next) {
   res.send({
     name: req.file.originalname,
-    url: 'http://localhost:3000/upload/' + req.file.originalname
+    url: 'http://localhost:3000/upload/' + req.file.originalname,
+    location: 'http://localhost:3000/upload/' + req.file.originalname,
   })
 })
 

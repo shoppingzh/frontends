@@ -1,7 +1,12 @@
 var fs = require('fs')
 var { join } = require('path')
-var { exec } = require('child_process')
+var readline = require('readline')
 
+/**
+ * 读取项目中的所有文件（除符合过滤条件的文件外）
+ * @param {String} path 项目路径
+ * @param  {...any} filters 过滤条件，符合的条件将会过滤，可过滤目录或文件
+ */
 function readFiles(path, ...filters) {
 
   var allFiles = []
@@ -28,19 +33,21 @@ function readFiles(path, ...filters) {
   return allFiles
 }
 
+/**
+ * 统计文件行数
+ * @param {String} path 文件路径，如d:/1.txt
+ * @param {Function} callback 回调
+ */
 function statLines(path, callback) {
-  exec(`wc ${path}`, (err, result) => {
-    if (err) {
-      callback(err)
-    }
-    console.log(result)
-    var regExp = new RegExp(/\s*(\d+)\s*/, 'g')
-    var exec = regExp.exec(result)
-    if (!exec) {
-      callback(null, 0)
-    } else {
-      callback(null, parseInt(exec[1]))
-    }
+  let total = 0
+  const rl = readline.createInterface({
+    input: fs.createReadStream(path)
+  })
+  rl.on('line', line => {
+    total++
+  })
+  rl.once('close', () => {
+    callback(null, total)
   })
 }
 

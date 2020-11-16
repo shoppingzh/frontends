@@ -3,7 +3,7 @@ var { readFiles, statLines } = require('./file')
 var files = readFiles('/Users/dascomsoft/Desktop/v10/admin', file => {
   return file.isDirectory() && (file.name === 'node_modules' || file.name === 'public')
 }, file => {
-  return file.isFile() && !/(vue|js|scss|md)$/.test(file.name)
+  return file.isFile() && !/(vue|js|md)$/.test(file.name)
 })
 
 var total = 0

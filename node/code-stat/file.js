@@ -44,6 +44,9 @@ function statLines(path, callback) {
     input: fs.createReadStream(path)
   })
   rl.on('line', line => {
+    if (line.trim().length < 3) {
+      return
+    }
     total++
   })
   rl.once('close', () => {

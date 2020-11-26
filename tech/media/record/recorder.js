@@ -1,12 +1,17 @@
 (function() {
 
+  function noop() {}
+
+  var defaults = {
+    onInit: noop,
+    onError: noop,
+    onNotSupported: noop
+  }
 
   function Recorder(video, options) {
-
     this.video = video
-    this.options = Object.assign({}, options)
+    this.options = Object.assign({}, defaults, options)
     this.init()
-
   }
 
   Recorder.prototype = {
@@ -17,15 +22,19 @@
         height: this.video.height
       }
     },
-    start: function(callback) {
+    start: function() {
       this.mediaDevices.getUserMedia({
-        video: this.size,
-        audio: true
+        video: {
+          width: this.size.width,
+          height: this.size.height,
+          facingMode: "user"
+        },
+        audio: false
       }).then((stream) => {
         this.video.srcObject = stream
         this.video.onloadeddata = this.onReady.bind(this)
       }).catch(e => {
-        
+        this.options.onError.call(this, e)
       })
     },
     onReady: function() {
@@ -45,7 +54,7 @@
       canvas.toBlob((blob, type) => {
         var callback = this.options.screenshot.callback
         if (callback) {
-          callback(blob)
+          callback.call(this, blob)
         }
       })
     }

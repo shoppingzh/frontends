@@ -1,4 +1,4 @@
-(function() {
+window.Recorder = (function() {
 
   function noop() {}
 
@@ -14,8 +14,23 @@
     this.init()
   }
 
+  // 检查是否支持录制
+  Recorder.checkSupport = function() {
+    try {
+      if (!navigator.mediaDevices.getUserMedia) {
+        return false
+      }
+      return true
+    } catch (error) {
+      return false
+    }
+  }
+
   Recorder.prototype = {
     init: function() {
+      if (!Recorder.checkSupport()) {
+        return this.options.onNotSupported()
+      }
       this.mediaDevices = navigator.mediaDevices
       this.size = {
         width: this.video.width,
@@ -60,6 +75,6 @@
     }
   }
 
-  window.Recorder = Recorder
+  return Recorder;
 
 })();

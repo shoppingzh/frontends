@@ -146,6 +146,11 @@
     </div>
   </div>
 
+  <script src="https://cdn.bootcdn.net/ajax/libs/vConsole/3.3.4/vconsole.min.js"></script>
+  <script>
+    new VConsole()
+  </script>
+
 
   
   <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.12/vue.min.js"></script>
@@ -168,6 +173,12 @@
         video.width = size.width
         video.height = size.height
         this.recorder = new Recorder(video, {
+          onNotSupported() {
+            console.error('不支持')
+          },
+          onError(e) {
+            console.error(e)
+          },
           screenshot: {
             fpm: 60,
             callback: data => {

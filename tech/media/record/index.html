@@ -128,7 +128,7 @@
     </div>
     <div class="view-box">
       <!-- <canvas></canvas> -->
-      <video ref="video"></video>
+      <video ref="video" style="width: 400px; height: 400px;"></video>
       <div class="overlay">
         <div class="overlay__corner"></div>
         <div class="overlay__corner"></div>
@@ -160,10 +160,10 @@
 
   <script>
 
-    var size = {
-      width: 400,
-      height: 400
-    }
+    // var size = {
+    //   width: 400,
+    //   height: 400
+    // }
 
     var app = new Vue({
       el: '#app',
@@ -173,8 +173,6 @@
       },
       mounted() {
         var video = this.$refs.video
-        video.width = size.width
-        video.height = size.height
         this.recorder = new Recorder(video, {
           onNotSupported() {
             console.error('不支持')

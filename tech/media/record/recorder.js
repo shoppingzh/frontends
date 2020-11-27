@@ -33,8 +33,8 @@ window.Recorder = (function() {
       }
       this.mediaDevices = navigator.mediaDevices
       this.size = {
-        width: this.video.width,
-        height: this.video.height
+        width: this.video.width || this.video.clientWidth,
+        height: this.video.height || this.video.clientHeight
       }
     },
     start: function() {

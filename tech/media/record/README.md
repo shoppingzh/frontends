@@ -31,6 +31,13 @@ screenshot | 截图 | object | -
 screenshot.fpm | 每分钟截图数 | number | -
 screenshot.callback | 每一帧截图的回调 | function | -
 
+## methods
+
+方法 | 说明 | 参数 | 返回值
+-- | -- | -- | --
+start | 开始录制 | - | -
+stop | 停止录制 | - | -
+
 ## 其它
 
 `Recorder.checkSupport()` 检查是否支持录制

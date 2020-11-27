@@ -122,7 +122,9 @@
 
   <div id="app">
     <div style="text-align: center; margin-bottom: 12px;">
-      <button @click="handleRecord" class="btn">拉起摄像头</button>
+      <button @click="handleRecord" class="btn">
+        {{ running ? '结束' : '开始' }}
+      </button>
     </div>
     <div class="view-box">
       <!-- <canvas></canvas> -->
@@ -166,6 +168,7 @@
     var app = new Vue({
       el: '#app',
       data: {
+        running: false,
         screenshots: []
       },
       mounted() {
@@ -194,7 +197,12 @@
       },
       methods: {
         handleRecord() {
+          if (this.running && this.recorder) {
+            this.running = false
+            return this.recorder.stop()
+          }
           this.recorder.start()
+          this.running = true
         },
         scrollToEnd() {
           var box = this.$refs.screenshotBox

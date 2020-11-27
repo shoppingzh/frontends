@@ -46,21 +46,39 @@ window.Recorder = (function() {
         },
         audio: false
       }).then((stream) => {
+        this.stream = stream
         this.video.srcObject = stream
         this.video.onloadeddata = this.onReady.bind(this)
       }).catch(e => {
         this.options.onError.call(this, e)
       })
     },
-    onReady: function() {
-      this.video.play()
-      if (this.options.screenshot) {
-        setInterval(() => {
-          this.takeScreenshot()
-        }, 60 / this.options.screenshot.fpm * 1000)
+    stop: function() {
+      this.recording = false
+      if (this.stream) {
+        var tracks = this.stream.getTracks() || []
+        tracks.forEach(track => {
+          track.stop()
+        })
       }
     },
-    takeScreenshot: function() {
+    onReady: function() {
+      this.video.play()
+      this.recording = true
+      if (this.options.screenshot) {
+        this.takeScreenshotContinuous(60 / this.options.screenshot.fpm * 1000)
+      }
+    },
+    takeScreenshotContinuous: function(delay) {
+      var doTake = () => {
+        this.takeScreenshot(() => {
+          if (!this.recording) return
+          setTimeout(doTake, delay)
+        })
+      }
+      doTake()
+    },
+    takeScreenshot: function(cb) {
       canvas = document.createElement('canvas')
       canvas.width = this.size.width
       canvas.height = this.size.height
@@ -71,6 +89,7 @@ window.Recorder = (function() {
         if (callback) {
           callback.call(this, blob)
         }
+        cb && cb()
       })
     }
   }

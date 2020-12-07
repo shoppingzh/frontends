@@ -1,0 +1,42 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <video
+    controls
+    x5-video-palyer-type="h5-page"
+    src="//upos-sz-mirrorkodo.bilivideo.com/upgcxcode/10/55/262955510/262955510-1-16.mp4?e=ig8euxZM2rNcNbdlhoNvNC8BqJIzNbfq9rVEuxTEnE8L5F6VnEsSTx0vkX8fqJeYTj_lta53NCM=&uipk=5&nbs=1&deadline=1607164991&gen=playurl&os=kodobv&oi=1903433189&trid=f3058100bdf74f36aeb637bd559d7c76h&platform=html5&upsig=67fbedf4b7f3ddd975c9d8a71899abcf&uparams=e,uipk,nbs,deadline,gen,os,oi,trid,platform&mid=0&logo=80000000"></video>
+  
+  <button onclick="play()">播放</button>
+
+    <script>
+
+      var video = document.querySelector('video')
+      // video.addEventListener('canplay', function(e) {
+        // video.currentTime = 60
+        // video.play()
+      // })
+
+      // loadedmetadata - 不可播放
+      // loadeddata 可播放第一帧
+      // timeupdate 已经在播放
+
+      function timeupdateHandler() {
+        video.currentTime = 35 * 60
+        video.removeEventListener('timeupdate', timeupdateHandler)
+      }
+      video.addEventListener('timeupdate', timeupdateHandler)
+
+      
+
+      function play() {
+        video.play()
+      }
+    </script>
+
+</body>
+</html>

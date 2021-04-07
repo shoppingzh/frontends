@@ -1,0 +1,44 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    @keyframes oops {
+      25% {
+        transform: translateX(-10px);
+      }
+      50% {
+        transform: translateX(0);
+      }
+      75% {
+        transform: translateX(10px);
+      }
+      100% {
+        transform: translateX(0);
+      }
+    }
+    .oops {
+      animation: oops .2s ease-in-out 2;
+    }
+  </style>
+</head>
+<body>
+
+  <input>
+
+  <script>
+    const input = document.querySelector('input')
+    console.log(input.contentEditable)
+    input.addEventListener('paste', e => {
+      e.preventDefault()
+      input.classList.add('oops')
+      setTimeout(() => {
+        input.classList.remove('oops')
+      }, 300)
+    })
+    
+  </script>
+  
+</body>
+</html>

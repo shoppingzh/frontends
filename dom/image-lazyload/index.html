@@ -83,7 +83,9 @@
         if (el.getAttribute('loaded')) continue
         if (y >= top && y <= bottom) {
           el.setAttribute('loaded', 'loaded')
-          el.querySelector('img').setAttribute('src', el.getAttribute('data-src'))
+          setTimeout(() => {
+            el.querySelector('img').setAttribute('src', el.getAttribute('data-src'))
+          }, 450)
         }
       }
     }

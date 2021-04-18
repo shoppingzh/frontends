@@ -1,0 +1,93 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .image-item {
+      position: relative;
+      margin: 0 auto 15px;
+      width: 600px;
+      height: 300px;
+      border: 1px solid #eee;
+      border-radius: 3px;
+      overflow: hidden;
+    }
+    .image-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .image-item:not([loaded]):after {
+      content: "图片加载中..";
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      background-color: #f3f4f7;
+      text-align: center;
+      color: #999;
+      font-size: 12px;
+      line-height: 300px;
+    }
+  </style>
+</head>
+<body>
+
+  <script>
+    const images = [
+      'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fhbimg.b0.upaiyun.com%2Ff795781d4bc0ecdf2a6ef7ad8b8b06190189ecd52bb3f-ow9c7R_fw658&refer=http%3A%2F%2Fhbimg.b0.upaiyun.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1621334525&t=47ee8e80dbf3b5a6064e614225792041',
+      'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fp1.pccoo.cn%2Fablum%2F20140421%2F20140421095451437.jpg&refer=http%3A%2F%2Fp1.pccoo.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1621334525&t=caedb8fcd6ccf04debba2756adf06517',
+      'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201510%2F07%2F20151007170017_KL2ty.jpeg&refer=http%3A%2F%2Fb-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1621334525&t=4da3faf3347c6e1acf9e4f14032d1143',
+      'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fpic3.zhimg.com%2Fv2-37b8eaa142b995bd15b6ce0d1c1d2208_1200x500.jpg&refer=http%3A%2F%2Fpic3.zhimg.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1621334525&t=7b98e092900e6f273b8d5b1f93a899ce',
+      'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fs3.sinaimg.cn%2Fmiddle%2F60d27f6dtad2e9981a982%26690&refer=http%3A%2F%2Fs3.sinaimg.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1621334525&t=e53d40bd7005e4ee039fdec6c7b37699',
+      'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fmmbiz.qpic.cn%2Fmmbiz_jpg%2FSNjITAcg5VndQwicTKEDQcXGhrrZbrV423YmEAuwGcIFBRiaRyZnnXu3uVWUoNIoplOKlVvX9ibPYXYX27nc8IqQw%2F640%3Fwx_fmt%3Djpeg&refer=http%3A%2F%2Fmmbiz.qpic.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1621336057&t=d87f5bb02ce5f0e1c385b479d0b25de1',
+      'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fa4.topitme.com%2Fl%2F201007%2F29%2F12803832799031.jpg&refer=http%3A%2F%2Fa4.topitme.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1621336057&t=a63e0ffb038f707d1dc5aef4af2ef62b',
+      'https://gimg2.baidu.com/image_search/src=http%3A%2F%2F5b0988e595225.cdn.sohucs.com%2Fimages%2F20180424%2F1ca26945dd9a44fbbbf5e364450b14e4.jpeg&refer=http%3A%2F%2F5b0988e595225.cdn.sohucs.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1621336057&t=22428df7c886352236f3bd0d642f018c',
+      'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fdimg03.c-ctrip.com%2Fimages%2Ffd%2Ftg%2Fg3%2FM06%2F35%2F45%2FCggYGVaF9jWAEJt5AAFYjLGhN6c508_R_1024_10000.jpg&refer=http%3A%2F%2Fdimg03.c-ctrip.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1621336057&t=4f2c0110cec3ec01bc494e3d5aec1e08',
+      'https://gimg2.baidu.com/image_search/src=http%3A%2F%2F07.imgmini.eastday.com%2Fmobile%2F20180619%2F20180619181028_05d224ebe7ce64e0da1d0a8cabd9ea02_16.jpeg&refer=http%3A%2F%2F07.imgmini.eastday.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1621336057&t=9b6ea6f8fec6013252c6d110ecd240b6',
+      'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg.mp.sohu.com%2Fq_70%2Cc_zoom%2Cw_640%2Fupload%2F20170730%2Fe4f677a179864e608b94b70bc25fbc32_th.jpg&refer=http%3A%2F%2Fimg.mp.sohu.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1621336057&t=457159e5d1b42ebe25d814a5d8b05a9f',
+      'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimage.biaobaiju.com%2Fuploads%2F20180302%2F16%2F1519979549-TnQfYqxWyo.gif&refer=http%3A%2F%2Fimage.biaobaiju.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1621336057&t=8a344266a8aedef924d4748b31c3733a',
+      'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fp1.ssl.cdn.btime.com%2Ft0151bfd247bb46e601.jpg%3Fsize%3D1024x657&refer=http%3A%2F%2Fp1.ssl.cdn.btime.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1621336057&t=76e20b0ee21576b5cb9f464fa54f8d7b',
+      'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fwww.chinazhiqing.org%2FUploadFile%2F2014-9%2F201491516181035180.jpg&refer=http%3A%2F%2Fwww.chinazhiqing.org&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1621336057&t=1fa2421ae27389df360d31a8664a0f27'
+    ]
+    const fragment = document.createDocumentFragment()
+    images.forEach(image => {
+      const el = document.createElement('div')
+      const imgEl = document.createElement('img')
+      el.classList.add('image-item')
+      el.setAttribute('data-src', image)
+
+      el.appendChild(imgEl)
+      fragment.appendChild(el)
+    })
+
+    document.body.appendChild(fragment)
+
+    // 记录待加载的图片位置(实际不能这么记录，因为页面还有其它待加载的元素)
+    const imagePositions = new Map()
+    document.querySelectorAll('.image-item').forEach(el => {
+      imagePositions.set(el, el.offsetTop)
+    })
+
+    // 监听滚动，懒加载
+    window.addEventListener('scroll', load)
+    window.addEventListener('load', load)
+
+    function load() {
+      const top = document.body.scrollTop
+      const bottom = top + document.body.clientHeight
+      for (const [el, y] of imagePositions.entries()) {
+        if (el.getAttribute('loaded')) continue
+        if (y >= top && y <= bottom) {
+          el.setAttribute('loaded', 'loaded')
+          el.querySelector('img').setAttribute('src', el.getAttribute('data-src'))
+        }
+      }
+    }
+  </script>
+  
+</body>
+</html>

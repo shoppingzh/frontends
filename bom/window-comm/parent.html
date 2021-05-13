@@ -1,0 +1,28 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parent</title>
+</head>
+<body>
+
+  <h3>父页面</h3>
+
+  <button id="open">打开子页面</button>
+
+  <script>
+    document.querySelector('#open').addEventListener('click', () => {
+      openChildWindow()
+    })
+
+    function openChildWindow() {
+      window.addEventListener('message', e => {
+        console.log(e)
+      })
+      const win = window.open('./child.html')
+      console.log(win)
+    }
+  </script>
+  
+</body>
+</html>

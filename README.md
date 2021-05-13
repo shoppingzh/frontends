@@ -9,9 +9,10 @@
 - `cors` 跨域学习与解决方案(jsonp/cors/反向代理等)
 - `demos` 对于一些常用第三方库的使用例程(如图形库、手势库、媒体库等)
 - `docs` 文档集合
-- `dom` 浏览器对象模型学习集合
-- `es` ECMAScript 2015以前的js学习
-- `es6`ESMAScript 2015特性学习
+- `dom`  浏览器对象模型学习集合
+- `es`  ECMAScript 2015以前的js学习
+- `es6` ECMAScript 2015特性学习
+- `es-polyfill` ECMAScript polyfill
 - **`functions`** 个人函数集合
 - `liveroom` 一个基于vue的直播间例程(UI类似腾讯直播)
 - `pdfjs` pdf库学习集合

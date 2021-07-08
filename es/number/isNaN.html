@@ -1,0 +1,22 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+    console.log(isNaN('1')) // false
+    console.log(Number.isNaN('1')) // false
+
+    console.log(isNaN('NaN')) // true
+    console.log(Number.isNaN('NaN')) // false
+    console.log(Number.isNaN(NaN)) // true
+
+    console.log(isNaN('123x')) // true
+    console.log(Number.isNaN('123x')) // false
+  </script>
+
+</body>
+</html>

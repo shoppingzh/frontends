@@ -1,0 +1,29 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <script>
+    function Person(name) {
+      this.name = name
+    }
+    Person.prototype.work = function() {
+      console.log('work')
+    }
+
+    function myNew(Constructor) {
+      const obj = {}
+      Object.setPrototypeOf(obj, Constructor.prototype)
+      const result = Constructor.apply(obj, Array.prototype.slice.call(arguments, 1))
+      return typeof result === 'object' ? result : obj
+    }
+
+    console.log(new Person('xpzheng'))
+    console.log(myNew(Person, 'xpzheng'))
+  </script>
+  
+</body>
+</html>

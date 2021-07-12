@@ -1,0 +1,44 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+    function Animal(name) {
+      this.name = name
+    }
+    Animal.prototype.eat = function() {
+      console.log(`${this.name}吃东西`)
+    }
+
+    function Bird(name) {
+      Animal.call(this, name)
+    }
+    Bird.prototype = new Animal()
+    Bird.prototype.fly = function() {
+      console.log(`${this.name}飞`)
+    }
+    Bird.prototype.constructor = Bird
+
+    // 百灵鸟
+    function Lark() {
+      Bird.call(this, '百灵鸟')
+    }
+    Lark.prototype = new Bird()
+    Lark.prototype.sing = function() {
+      console.log(`${this.name}唱歌`)
+    }
+    Lark.prototype.constructor = Lark
+
+    const lark = new Lark()
+    lark.eat()
+    lark.fly()
+    lark.sing()
+    console.log(lark)
+  </script>
+
+</body>
+</html>

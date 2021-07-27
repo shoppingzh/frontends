@@ -19,15 +19,30 @@
     }
 
     function cloneDeep(value) {
-      const doClone = (value, newValue = {}, deep = true) => {
+      const doClone = (value, deep = true) => {
         if (isPrimitive(value) || isFunc(value)) return value
-        const keys = Object.keys(value)
-        for (let i = 0, len = keys.length; i < len; i ++) {
-          const key = keys[i]
-          const val = value[key]
-          newValue[key] = deep ? doClone(val, newValue, deep) : val
+
+        let newValue
+        if (Array.isArray(value)) {
+          newValue = []
+          for (let i = 0, len = value.length; i < len; i++) {
+            newValue[i] = doClone(value[i], deep)
+          }
+          return newValue
         }
-        return newValue
+
+        if (typeof value === 'object') {
+          newValue = {}
+          const keys = Object.keys(value)
+          for (let i = 0, len = keys.length; i < len; i ++) {
+            const key = keys[i]
+            const val = value[key]
+            newValue[key] = deep ? doClone(val, deep) : val
+          }
+          return newValue
+        }
+
+        return value
       }
 
       return doClone(value)
@@ -46,7 +61,16 @@
       },
       say() {
         console.log('say hello')
-      }
+      },
+      arr: [
+        { time: +new Date(), x: { fake: true } },
+        2,
+        3,
+        4,
+        function() {
+          console.log('done')
+        }
+      ]
     }
 
     const o2 = cloneDeep(o)

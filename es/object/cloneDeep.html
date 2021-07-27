@@ -1,0 +1,57 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+    // 是否是原始数据类型
+    // null/undefined/boolean/number/string/symbol/bigint
+    function isPrimitive(value) {
+      return value == null || ['boolean', 'number', 'string', 'bigint', 'symbol'].indexOf(typeof value) >= 0
+    }
+
+    // 是否为函数
+    function isFunc(value) {
+      return typeof value === 'function'
+    }
+
+    function cloneDeep(value) {
+      const doClone = (value, newValue = {}, deep = true) => {
+        if (isPrimitive(value) || isFunc(value)) return value
+        const keys = Object.keys(value)
+        for (let i = 0, len = keys.length; i < len; i ++) {
+          const key = keys[i]
+          const val = value[key]
+          newValue[key] = deep ? doClone(val, newValue) : val
+        }
+        return newValue
+      }
+
+      return doClone(value)
+    }
+
+    const o = {
+      name: 'xpzheng',
+      age: 20,
+      address: {
+        province: 'Guangdong',
+        city: 'Shenzhen',
+        location: {
+          lat: 122,
+          lng: 28
+        }
+      },
+      say() {
+        console.log('say hello')
+      }
+    }
+
+    const o2 = cloneDeep(o)
+    console.log(o2)
+    console.log(o === o2)
+  </script>
+</body>
+</html>

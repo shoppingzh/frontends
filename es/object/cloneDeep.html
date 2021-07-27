@@ -25,7 +25,7 @@
         for (let i = 0, len = keys.length; i < len; i ++) {
           const key = keys[i]
           const val = value[key]
-          newValue[key] = deep ? doClone(val, newValue) : val
+          newValue[key] = deep ? doClone(val, newValue, deep) : val
         }
         return newValue
       }

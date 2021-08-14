@@ -1,0 +1,39 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <script>
+
+    console.log('Object.create(null):')
+    const o = Object.create(null)
+    console.log(o)
+    console.log(o.__proto__)
+
+    const a = {
+      name: 'xpzheng'
+    }
+    const b = Object.create(a)
+    console.log(b)
+
+    function Person(name) {
+      this.name = name
+    }
+    Person.prototype.sayHello = function() {
+      console.log(`${this.name}, hello!`)
+    }
+
+    const p1 = new Person('Xpzheng')
+    console.log(p1)
+    p1.sayHello()
+
+    const p2 = Object.create(p1)
+    console.log(p2)
+    p2.sayHello()
+  </script>
+  
+</body>
+</html>

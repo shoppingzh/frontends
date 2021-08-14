@@ -1,0 +1,46 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+    const o1 = {
+      name: 'x'
+    }
+    for(let key in o1) {
+      console.log(key)
+    }
+
+    function Person(name) {
+      this.name = name
+    }
+    Person.prototype = Object.create({})
+    Person.prototype.isHuman = true
+    Person.prototype.sayHello = function() {
+      console.log(`Hello, ${this.name}!`)
+    }
+    Person.prototype.constructor = Person
+    const p = new Person('Xpzheng')
+    for (let key in p) {
+      console.log(`${key}=${p[key]}`)
+    }
+
+    function Man(name) {
+      Person.call(this, name)
+    }
+    Man.prototype = Object.create(new Person())
+    Man.prototype.constructor = Man
+
+    const m = new Man('Xpzheng')
+    for (let key in m) {
+      console.log(`${key}=${m[key]}`)
+    }
+    
+
+  </script>
+
+</body>
+</html>

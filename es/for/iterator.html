@@ -1,0 +1,37 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <script>
+    function Person(name, age, address) {
+      this.name = name
+      this.age = age
+      this.address = address
+    }
+    Person.prototype[Symbol.iterator] = function() {
+      const self = this
+      const values = [this.name, this.age, this.address]
+      return {
+        next() {
+          const val = values.shift()
+          return {
+            done: !val,
+            value: val
+          }
+        }
+      }
+    }
+
+    const p = new Person('xpzheng', 25, 'Guangdong')
+    for (let x of p) {
+      console.log(x)
+    }
+  </script>
+  
+</body>
+</html>

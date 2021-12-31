@@ -1,0 +1,26 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <div id="text1">文本1</div>
+  
+  <script>
+    console.time('script 2')
+  </script>
+  <!-- 如果下方的脚本不是defer加载，下面的文本2就无法加载出来 -->
+  <script src="./2.js" defer></script>
+  <!-- <script src="./2.js"></script> -->
+  <!-- <script src="./1.js" defer></script> -->
+  
+  <div id="text2">文本2</div>
+
+  <!-- 脚本3比脚本1要小，所有它先执行 -->
+  <script src="./1.js" async></script>
+  <script src="./3.js" async></script>
+  
+</body>
+</html>

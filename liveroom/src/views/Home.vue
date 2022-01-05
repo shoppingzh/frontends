@@ -76,4 +76,6 @@ export default {
   .video-wrapper{ position: absolute; left: 0; right: 300px; top: 0; bottom: 0; overflow: auto; }
   .chat-wrapper{ position: absolute; right: 0; width: 300px; top: 0; bottom: 0; overflow: auto; background-color: rgba(0, 0, 0, .8); }
   .video-js{ width: 100%; height: 100%; }
+  /* 大播放按钮 */
+  vjs-big-play-button{ left: 50%; right: auto; top: 50; bottom: auto; margin-left: .15em; margin-top: -.8em; }
 </style>

@@ -1,0 +1,43 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <script>
+    console.log('Object的属性：')
+    for (let key of Object.getOwnPropertyNames(Object.prototype)) {
+      console.log({
+        key,
+        descriptor: Object.getOwnPropertyDescriptor(Object.prototype, key)
+      })
+    }
+    console.log('======================')
+
+    function Person(name) {
+      this.name = name
+    }
+    Person.prototype = {
+      sayName() {
+        console.log(this.name)
+      },
+      toString() {}
+    }
+
+    const p = new Person('zxp')
+    for (let key in p) {
+      console.log(key)
+    }
+
+    console.log('====================')
+
+    for (let key of Object.keys(p)) {
+      console.log(key)
+    }
+  </script>
+  
+</body>
+</html>

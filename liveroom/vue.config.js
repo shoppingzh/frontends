@@ -1,3 +1,3 @@
 module.exports = {
-  publicPath: '/suite/live'
+  publicPath: process.env.NODE_ENV === 'development' ? '' : '/suite/live'
 }

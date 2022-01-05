@@ -14,6 +14,8 @@
       console.log(key)
     }
 
+    console.log('==================')
+
     function Person(name) {
       this.name = name
     }
@@ -27,6 +29,8 @@
     for (let key in p) {
       console.log(`${key}=${p[key]}`)
     }
+
+    console.log('==================')
 
     function Man(name) {
       Person.call(this, name)

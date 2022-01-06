@@ -1,0 +1,33 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <script>
+    function Super(name) {
+      this.name = name
+    }
+    Super.prototype.sayHi = function() {
+      console.log('hi')
+    }
+
+    function Sub(name, age) {
+      Super.call(this, name)
+      this.age = age
+    }
+    // 错误：调用两次了Super的构造函数
+    // Sub.prototype = new Super()
+    // 正确：只调用一次Super的构造函数，并且也能维持原型链
+    // Sub.prototype = Object.create(Super.prototype)
+    Sub.prototype.constructor = Sub
+
+    const sub = new Sub('zxp', 20)
+    console.log(sub)
+  </script>
+  
+</body>
+</html>

@@ -5,77 +5,98 @@
   <title>Document</title>
 </head>
 <body>
-  
+
+  <script src="https://cdn.bootcdn.net/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
   <script>
-    // 是否是原始数据类型
-    // null/undefined/boolean/number/string/symbol/bigint
+
+    function isObjectType(value, type) {
+      let objectType = Object.prototype.toString.call(value)
+      objectType = objectType.substring(8, objectType.length - 1)
+      return objectType === type
+    }
+
     function isPrimitive(value) {
-      return value == null || ['boolean', 'number', 'string', 'bigint', 'symbol'].indexOf(typeof value) >= 0
+      return value === null || ['boolean', 'string', 'number', 'bigint', 'symbol', 'undefined'].indexOf(typeof value) >= 0
     }
 
-    // 是否为函数
-    function isFunc(value) {
-      return typeof value === 'function'
+    function isArray(value) {
+      return isObjectType(value, 'Array')
     }
 
-    function cloneDeep(value) {
-      const doClone = (value, deep = true) => {
-        if (isPrimitive(value) || isFunc(value)) return value
-
-        let newValue
-        if (Array.isArray(value)) {
-          newValue = []
-          for (let i = 0, len = value.length; i < len; i++) {
-            newValue[i] = doClone(value[i], deep)
+    function clone(value) {
+      const refs = []
+      const doClone = (val, parent) => {
+        if (isPrimitive(val)) return val
+        if (refs.indexOf(val) >= 0) return val
+        // 函数
+        if (typeof val === 'function') return val
+        // 特殊对象：数组
+        if (isArray(val)) {
+          const cloneVal = []
+          for (let i = 0, len = val.length; i < len; i++) {
+            cloneVal[i] = doClone(val[i])
           }
-          return newValue
+          return cloneVal
+        }
+        // 特殊对象：正则表达式
+        if (isObjectType(val, 'RegExp')) {
+          return new RegExp(val)
+        }
+        // 特殊对象：日期
+        if (isObjectType(val, 'Date')) {
+          return new Date(val)
         }
 
-        if (typeof value === 'object') {
-          newValue = {}
-          const keys = Object.keys(value)
-          for (let i = 0, len = keys.length; i < len; i ++) {
-            const key = keys[i]
-            const val = value[key]
-            newValue[key] = deep ? doClone(val, deep) : val
-          }
-          return newValue
-        }
-
-        return value
+        // 普通对象
+        refs.push(val)
+        const cloneVal = {}
+        Object.keys(val).forEach(key => {
+          cloneVal[key] = doClone(val[key], val)
+        })
+        return cloneVal
       }
-
       return doClone(value)
     }
 
+  </script>
+  
+  <script>
+    const link = {}
     const o = {
-      name: 'xpzheng',
-      age: 20,
-      address: {
-        province: 'Guangdong',
-        city: 'Shenzhen',
-        location: {
-          lat: 122,
-          lng: 28
+      a: 'abc',
+      b: 123,
+      c: true,
+      d: null,
+      e: undefined,
+      f: BigInt(5),
+      g: {
+        ga: [1, 2, { gaa: 1, gab: false }],
+        gb: {
+          gba: 1,
+          gbb: new Date()
         }
       },
-      say() {
-        console.log('say hello')
-      },
-      arr: [
-        { time: +new Date(), x: { fake: true } },
-        2,
-        3,
-        4,
-        function() {
-          console.log('done')
-        }
-      ]
+      h: /^a/,
+      i: new Set(),
+      j: function() { console.log(this) },
+      k: () => { console.log(1) },
+      x: {
+        xx: {}
+      }
     }
+    link.source = o
+    o.x.xx = link
 
-    const o2 = cloneDeep(o)
+    console.log('原对象：')
+    console.log(o)
+
+    console.log('拷贝结果：')
+    const o2 = clone(o)
     console.log(o2)
-    console.log(o === o2)
+
+    console.log('lodash的拷贝结果：')
+    const o3 = _.cloneDeep(o)
+    console.log(o3)
   </script>
 </body>
 </html>

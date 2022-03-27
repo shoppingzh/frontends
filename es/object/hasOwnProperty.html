@@ -1,0 +1,36 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <script>
+    function Person(name) {
+      this.name = name
+    }
+    const o = Object.create(new Person('xpzheng'))
+    o.age = 20
+    console.log(o)
+
+    console.log(o.hasOwnProperty('name'))
+    console.log(o.hasOwnProperty('age'))
+    console.log(o.hasOwnProperty('address'))
+
+    const o2 = {
+      name: 'xpzheng',
+      hasOwnProperty: null
+    }
+    try {
+      console.log(o2.hasOwnProperty('name'))
+    } catch (err) {
+      console.error(err)
+    }
+    console.log(Object.prototype.hasOwnProperty.call(o2))
+
+  </script>
+  
+</body>
+</html>

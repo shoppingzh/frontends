@@ -1,0 +1,29 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <script>
+    const arr = []
+    arr[1] = 1
+    arr[3] = 3
+    arr[5] = 5
+    arr[80] = undefined
+    arr[100] = 100
+
+    console.log('=== for...of ===')
+    for (let o of arr) {
+      console.log(o)
+    }
+    console.log('=== forEach ===')
+    arr.forEach(o => {
+      console.log(o)
+    })
+  </script>
+  
+</body>
+</html>

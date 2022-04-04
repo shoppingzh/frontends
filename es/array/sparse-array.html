@@ -13,6 +13,7 @@
     arr[3] = 3
     arr[5] = 5
     arr[80] = undefined
+    arr[91] = null
     arr[100] = 100
 
     console.log('=== for...of ===')
@@ -23,6 +24,19 @@
     arr.forEach(o => {
       console.log(o)
     })
+
+    // 其他API
+    console.log('==== map ===')
+    console.log(arr.map(o => {
+      console.log('map callback')
+      return o
+    }))
+
+    console.log('=== reduce ===')
+    console.log(arr.reduce((map, o, index) => {
+      map[index] = o
+      return map
+    }, {}))
   </script>
   
 </body>

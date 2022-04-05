@@ -8,7 +8,6 @@
 <body>
 
   <script>
-    console.log('=== 顺序 ===')
     const o = {
       2: 2,
       name: 'xpzheng',
@@ -17,16 +16,6 @@
       3: 3
     }
     for (let key in o) {
-      console.log(key)
-    }
-    console.log('=== 继承 ===')
-    const p = Object.create(o)
-    Object.assign(p, {
-      4: 4,
-      age: 22,
-      1: 1
-    })
-    for (let key in p) {
       console.log(key)
     }
   </script>

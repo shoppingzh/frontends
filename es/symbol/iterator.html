@@ -1,0 +1,36 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+    const arr = [1, 2, 3]
+    console.log(arr[Symbol.iterator])
+
+    const timer = {
+      max: 100,
+      [Symbol.iterator]() {
+        let curr = 0
+        return {
+          next: () => {
+            return {
+              value: ++curr,
+              done: curr > this.max
+            }
+          }
+        }
+      }
+    }
+
+    console.log(timer)
+    for (let time of timer) {
+      console.log(time)
+    }
+  </script>
+
+</body>
+</html>

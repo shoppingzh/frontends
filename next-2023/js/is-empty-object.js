@@ -19,9 +19,9 @@ function isEmptyObject(object) {
   return true
 }
 
-console.log(isEmptyObject({}));
-console.log(isEmptyObject(Object.create(null)));
-console.log(isEmptyObject([]))
+console.log(isEmptyObject({})); // false
+console.log(isEmptyObject(Object.create(null))); // true
+console.log(isEmptyObject([])) // false
 
 function Person(name) {
   this.name = name
@@ -29,4 +29,4 @@ function Person(name) {
 Person.prototype.say = () => {
   console.log(`Hello, I'm ${this.name}`);
 }
-console.log(isEmptyObject(new Person('xpzheng')));
+console.log(isEmptyObject(new Person('xpzheng'))); // false

@@ -9,15 +9,24 @@ function isCurrentObjectEmpty(o) {
 function isEmptyObject(object) {
   let current = object
   while (current) {
-    if (isCurrentObjectEmpty(current)) {
-      return true
+    if (!isCurrentObjectEmpty(current)) {
+      return false
     }
 
     current = Object.getPrototypeOf(current)
   }
 
-  return false
+  return true
 }
 
 console.log(isEmptyObject({}));
 console.log(isEmptyObject(Object.create(null)));
+console.log(isEmptyObject([]))
+
+function Person(name) {
+  this.name = name
+}
+Person.prototype.say = () => {
+  console.log(`Hello, I'm ${this.name}`);
+}
+console.log(isEmptyObject(new Person('xpzheng')));
